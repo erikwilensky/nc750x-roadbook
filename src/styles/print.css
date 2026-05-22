@@ -1,0 +1,19 @@
+@media print {
+  nav,
+  .no-print {
+    display: none !important;
+  }
+
+  .print-page {
+    break-after: page;
+    page-break-after: always;
+  }
+
+  body {
+    background: white !important;
+  }
+
+  .print-hide-photos img {
+    display: none !important;
+  }
+}
