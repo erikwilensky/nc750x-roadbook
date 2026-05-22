@@ -1,0 +1,22 @@
+/** Approximate town / anchor coordinates for map placeholders. */
+export const TOWN_COORDS: Record<string, { lat: number; lng: number; label: string }> = {
+  bangkok: { lat: 13.737, lng: 100.56, label: "Bangkok / Sukhumvit" },
+  uthaiThani: { lat: 15.3794, lng: 100.0245, label: "Uthai Thani" },
+  sukhothai: { lat: 17.0196, lng: 99.7036, label: "Sukhothai Old City" },
+  uttaradit: { lat: 17.6256, lng: 100.0993, label: "Uttaradit" },
+  lampang: { lat: 18.2888, lng: 99.4909, label: "Lampang" },
+  chiangMai: { lat: 18.7883, lng: 98.9853, label: "Chiang Mai" },
+  doiInthanon: { lat: 18.5889, lng: 98.4867, label: "Doi Inthanon" },
+  maeChaem: { lat: 18.499, lng: 98.361, label: "Mae Chaem" },
+  maeSariang: { lat: 18.1667, lng: 97.9333, label: "Mae Sariang" },
+  khunYuam: { lat: 18.8297, lng: 97.9336, label: "Khun Yuam" },
+  maeHongSon: { lat: 19.3011, lng: 97.9654, label: "Mae Hong Son" },
+  pangMapha: { lat: 19.5185, lng: 98.2446, label: "Pang Mapha / Soppong" },
+  pai: { lat: 19.3583, lng: 98.4367, label: "Pai" },
+  maeTaeng: { lat: 19.1177, lng: 98.9418, label: "Mae Taeng" },
+  tak: { lat: 16.8833, lng: 99.125, label: "Tak" },
+  kamphaengPhet: { lat: 16.4828, lng: 99.522, label: "Kamphaeng Phet" },
+  nakhonSawan: { lat: 15.7047, lng: 100.1372, label: "Nakhon Sawan" },
+  chainat: { lat: 15.1852, lng: 100.125, label: "Chainat" },
+  suphanBuri: { lat: 14.4745, lng: 100.1177, label: "Suphan Buri" },
+};

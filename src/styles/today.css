@@ -1,0 +1,117 @@
+:root {
+  --green-soft: #2f5d50;
+  --gold-soft: #ead8a8;
+  --text: #1f2a24;
+  --warning: #d08a28;
+}
+
+.today-mode {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.today-day-select {
+  min-height: 48px;
+  border-radius: 16px;
+  border: 1px solid var(--line, #e6dcc5);
+  background: var(--card, #fffdf7);
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  color: var(--green, #173d32);
+}
+
+.today-action-btn {
+  min-height: 48px;
+  font-size: 1rem;
+}
+
+.today-hero h1 {
+  word-break: break-word;
+}
+
+.today-next-card {
+  border-left: 4px solid var(--gold, #c9a24a);
+}
+
+.difficulty-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.fuel-range-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+}
+
+.fuel-badge-low {
+  background: rgba(23, 61, 50, 0.12);
+  color: var(--green, #173d32);
+}
+
+.fuel-badge-medium {
+  background: rgba(201, 162, 74, 0.25);
+  color: var(--green, #173d32);
+}
+
+.fuel-badge-high {
+  background: rgba(180, 83, 60, 0.15);
+  color: var(--danger, #b4533c);
+}
+
+.weather-check-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0.65rem 1rem;
+  border-radius: 16px;
+  border: 1px solid var(--line, #e6dcc5);
+  background: var(--cream, #f7f1e5);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--green, #173d32);
+  text-decoration: none;
+}
+
+.weather-check-btn:hover {
+  border-color: var(--gold, #c9a24a);
+}
+
+.detour-card {
+  border-radius: 20px;
+  padding: 1rem 1.1rem;
+  background: var(--cream, #f7f1e5);
+  border: 1px solid var(--gold-soft, #ead8a8);
+}
+
+.detour-low {
+  border-color: var(--line, #e6dcc5);
+}
+
+.detour-medium {
+  border-color: var(--warning, #d08a28);
+  background: rgba(208, 138, 40, 0.08);
+}
+
+.detour-high {
+  border-color: var(--danger, #b4533c);
+  background: rgba(180, 83, 60, 0.08);
+}
+
+.detour-card-prominent {
+  border-width: 2px;
+}
+
+@media print {
+  .today-actions,
+  .today-day-picker,
+  .mobile-bottom-nav {
+    display: none !important;
+  }
+}

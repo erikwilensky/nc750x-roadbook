@@ -178,7 +178,6 @@ export function PlaceCard({
 
   const typeLabels: Record<string, string> = {
     hotel: "Stay",
-    coffee: "Coffee",
     food: "Food",
     viewpoint: "View",
     route: "Route",

@@ -1,6 +1,10 @@
 @media print {
   nav,
-  .no-print {
+  .no-print,
+  .mobile-bottom-nav,
+  .today-actions,
+  .today-day-picker,
+  .interactive-controls {
     display: none !important;
   }
 

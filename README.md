@@ -33,6 +33,18 @@ Enable **Places API (New)** in [Google Cloud Console](https://console.cloud.goog
 
 Common mistakes: wrong API enabled, key restricted to Android/iOS only, or env var added locally but not on Vercel.
 
+**Photo caching (API usage)**
+
+Place search and photos are cached for **30 days** by default (server + browser) so revisiting days does not call Google every time. This is HTTP/CDN caching via your app, not a permanent photo archive — aligned with a fixed trip roadbook.
+
+Optional in `.env.local`:
+
+```env
+PLACES_CACHE_REVALIDATE_SECONDS=2592000
+```
+
+Lower the value if you want fresher images; raise it to reduce API calls further.
+
 ## Development
 
 ```bash

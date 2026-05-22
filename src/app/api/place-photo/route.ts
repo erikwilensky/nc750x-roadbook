@@ -1,4 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
+import { getCachedPlacePhoto } from "@/lib/cachedPlaces";
+import { PLACES_PHOTO_HTTP_CACHE } from "@/lib/placesCache";
 
 export async function GET(req: NextRequest) {
   const name = req.nextUrl.searchParams.get("name");
@@ -8,35 +10,22 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: "Missing photo name" }, { status: 400 });
   }
 
-  const apiKey = process.env.GOOGLE_MAPS_API_KEY;
-  if (!apiKey) {
-    return NextResponse.json(
-      { error: "Missing GOOGLE_MAPS_API_KEY" },
-      { status: 500 }
-    );
-  }
+  const cached = await getCachedPlacePhoto(name, maxWidthPx);
 
-  const url = `https://places.googleapis.com/v1/${name}/media?maxWidthPx=${encodeURIComponent(maxWidthPx)}`;
-
-  const response = await fetch(url, {
-    redirect: "follow",
-    headers: { "X-Goog-Api-Key": apiKey },
-  });
-  if (!response.ok) {
+  if (cached.status !== 200 || !cached.base64) {
     return NextResponse.json(
       { error: "Could not load photo" },
-      { status: response.status }
+      { status: cached.status === 200 ? 502 : cached.status }
     );
   }
 
-  const contentType = response.headers.get("content-type") ?? "image/jpeg";
-  const buffer = await response.arrayBuffer();
+  const buffer = Buffer.from(cached.base64, "base64");
 
   return new NextResponse(buffer, {
     status: 200,
     headers: {
-      "Content-Type": contentType,
-      "Cache-Control": "no-store",
+      "Content-Type": cached.contentType,
+      "Cache-Control": PLACES_PHOTO_HTTP_CACHE,
     },
   });
 }

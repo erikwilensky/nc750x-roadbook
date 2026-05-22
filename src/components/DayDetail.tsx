@@ -1,14 +1,21 @@
-import { TripDay } from "@/data/trip";
+import Link from "next/link";
+import { TripDayEnriched } from "@/data/trip";
+import { DifficultyBadge } from "./DifficultyBadge";
+import { WeatherPanel } from "./WeatherPanel";
+import { FuelStrategyCard } from "./FuelStrategyCard";
+import { DoNotDetourCard } from "./DoNotDetourCard";
 import { googleMapsDirectionsUrl } from "@/lib/maps";
 import { formatBaht, formatKm } from "@/lib/money";
+import { CoffeeStrategy } from "./CoffeeStrategy";
+import { FoodPlan } from "./FoodPlan";
 import { CostPill } from "./CostPill";
 import { PhotoGrid } from "./PhotoGrid";
 
 type DayDetailProps = {
-  day: TripDay;
+  day: TripDayEnriched;
 };
 
-function getHeroPlace(day: TripDay) {
+function getHeroPlace(day: TripDayEnriched) {
   return (
     day.places.find((p) => p.type === "route") ??
     day.places.find((p) => p.type === "viewpoint") ??
@@ -27,7 +34,6 @@ function getRouteParts(route: string): [string, string] | null {
 export function DayDetail({ day }: DayDetailProps) {
   const heroPlace = getHeroPlace(day);
   const routeParts = getRouteParts(day.route);
-  const coffeeStops = day.places.filter((p) => p.type === "coffee");
   const hotel = day.places.find((p) => p.type === "hotel");
 
   return (
@@ -82,41 +88,44 @@ export function DayDetail({ day }: DayDetailProps) {
                 />
               </div>
 
-              {routeParts && (
-                <a
-                  href={googleMapsDirectionsUrl(routeParts[0], routeParts[1])}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-primary block w-full text-center"
+              <div className="flex flex-col gap-2">
+                {routeParts && (
+                  <a
+                    href={googleMapsDirectionsUrl(routeParts[0], routeParts[1])}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-primary block w-full text-center"
+                  >
+                    Open route in Google Maps
+                  </a>
+                )}
+                <Link
+                  href={`/map/day/${day.day}`}
+                  className="btn-secondary block w-full text-center"
                 >
-                  Open route map
-                </a>
-              )}
+                  Roadbook map (Day {day.day})
+                </Link>
+                <Link
+                  href={`/today?day=${day.day}`}
+                  className="btn-secondary block w-full text-center"
+                >
+                  Today Mode (Day {day.day})
+                </Link>
+              </div>
             </div>
           </section>
 
           <section className="card p-5">
-            <h3 className="mb-2 font-semibold text-forest">Food target</h3>
-            <p className="font-medium">{day.foodTarget}</p>
-            {day.foodBackups.length > 0 && (
-              <ul className="mt-2 list-inside list-disc text-sm text-muted">
-                {day.foodBackups.map((b) => (
-                  <li key={b}>{b}</li>
-                ))}
-              </ul>
-            )}
+            <DifficultyBadge difficulty={day.difficulty} />
           </section>
 
-          {coffeeStops.length > 0 && (
-            <section className="card p-5">
-              <h3 className="mb-2 font-semibold text-forest">Coffee stops</h3>
-              <ul className="space-y-1 text-sm">
-                {coffeeStops.map((c) => (
-                  <li key={c.id}>{c.name}</li>
-                ))}
-              </ul>
-            </section>
-          )}
+          <DoNotDetourCard note={day.doNotDetour} />
+          <FuelStrategyCard fuelStrategy={day.fuelStrategy} />
+          <WeatherPanel weather={day.weather} />
+
+          <FoodPlan food={day.food} />
+
+          <CoffeeStrategy day={day} />
 
           {hotel && (
             <section className="card p-5">

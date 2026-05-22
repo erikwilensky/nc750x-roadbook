@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { BudgetSummary } from "@/components/BudgetSummary";
 import { PrintDay } from "@/components/PrintDay";
-import { trip } from "@/data/trip";
+import { getTripDays, trip } from "@/data/trip";
 import { formatBaht, formatKm } from "@/lib/money";
 
 export function PrintView() {
@@ -84,7 +84,7 @@ export function PrintView() {
         <BudgetSummary trip={trip} compact />
       </div>
 
-      {trip.days.map((day) => (
+      {getTripDays().map((day) => (
         <PrintDay key={day.day} day={day} withPhotos={withPhotos} />
       ))}
     </>

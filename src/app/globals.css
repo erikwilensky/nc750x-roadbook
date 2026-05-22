@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "leaflet/dist/leaflet.css";
+@import "../styles/map.css";
+@import "../styles/today.css";
 @import "../styles/print.css";
 
 body {
