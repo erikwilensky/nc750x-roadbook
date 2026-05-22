@@ -22,7 +22,16 @@ Add your Google Maps API key to `.env.local`:
 GOOGLE_MAPS_API_KEY=your_google_maps_api_key_here
 ```
 
-Enable **Places API (New)** in [Google Cloud Console](https://console.cloud.google.com/). Restrict the key to server IPs or use Vercel env vars in production.
+Enable **Places API (New)** in [Google Cloud Console](https://console.cloud.google.com/) (not “Places API” legacy, not Android Maps). Billing must be enabled on the project.
+
+**Troubleshooting photos**
+
+1. Create `.env.local` from `.env.example` and set `GOOGLE_MAPS_API_KEY=...`
+2. Restart dev server after changing env: `npm run dev`
+3. Visit `/api/places-health` — should return `"ok": true`
+4. On Vercel: add the same variable under Project → Settings → Environment Variables, then **Redeploy**
+
+Common mistakes: wrong API enabled, key restricted to Android/iOS only, or env var added locally but not on Vercel.
 
 ## Development
 

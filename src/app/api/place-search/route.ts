@@ -42,7 +42,26 @@ export async function GET(req: NextRequest) {
 
   if (!response.ok) {
     const text = await response.text();
-    return NextResponse.json({ error: text }, { status: response.status });
+    let message = text;
+    try {
+      const parsed = JSON.parse(text) as {
+        error?: { message?: string; status?: string };
+      };
+      message = parsed.error?.message ?? text;
+    } catch {
+      /* use raw text */
+    }
+    return NextResponse.json(
+      {
+        place: null,
+        error: message,
+        hint:
+          response.status === 403
+            ? "Enable Places API (New) in Google Cloud Console and allow it on this API key."
+            : undefined,
+      },
+      { status: response.status }
+    );
   }
 
   const data = await response.json();
