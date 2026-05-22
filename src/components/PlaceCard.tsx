@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { TripPlace } from "@/data/trip";
 import {
   getFirstPhotoName,
@@ -10,8 +10,11 @@ import {
   type PlaceSearchResult,
 } from "@/lib/googlePlaces";
 import { googleImageSearchUrl, googleMapsSearchUrl } from "@/lib/maps";
-
-const PHOTO_SKIP_TYPES = new Set(["route"]);
+import {
+  parseRouteEndpoints,
+  routeDirectionsUrl,
+  routePhotoSearchQuery,
+} from "@/lib/routePlace";
 
 type PlaceCardProps = {
   place: TripPlace;
@@ -23,13 +26,8 @@ type PhotoStatus = "idle" | "loading" | "ok" | "no_match" | "api_error";
 
 function photoStatusMessage(
   status: PhotoStatus,
-  place: TripPlace,
-  skipPhotoLookup: boolean,
   apiError?: string | null
 ): string {
-  if (skipPhotoLookup && place.type === "route") {
-    return "Route overview — open Maps for the drive";
-  }
   if (status === "api_error") {
     if (apiError?.includes("Missing GOOGLE_MAPS_API_KEY")) {
       return "Add GOOGLE_MAPS_API_KEY to .env.local (local) or Vercel env vars";
@@ -48,23 +46,66 @@ function photoStatusMessage(
   return "Photo unavailable";
 }
 
+function RouteFallbackPanel({ place }: { place: TripPlace }) {
+  const endpoints = parseRouteEndpoints(place.name);
+  const directions = routeDirectionsUrl(place);
+
+  return (
+    <div className="flex h-full w-full flex-col items-center justify-center gap-3 bg-gradient-to-br from-forest/10 via-cream to-gold/10 p-6 text-center">
+      <div className="flex w-full max-w-[200px] items-center gap-2 text-forest">
+        <span className="h-2 w-2 shrink-0 rounded-full bg-gold" />
+        <span className="h-0.5 flex-1 bg-gold/60" />
+        <span className="text-lg" aria-hidden>
+          →
+        </span>
+        <span className="h-0.5 flex-1 bg-gold/60" />
+        <span className="h-2 w-2 shrink-0 rounded-full bg-forest" />
+      </div>
+      {endpoints && (
+        <p className="text-sm font-medium text-forest">
+          {endpoints.origin} → {endpoints.destination}
+        </p>
+      )}
+      <p className="max-w-[240px] text-xs text-muted">
+        Driving routes don&apos;t have Google place photos — use directions for
+        the full ride.
+      </p>
+      {directions && (
+        <a
+          href={directions}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn-primary text-xs"
+        >
+          Open route in Google Maps
+        </a>
+      )}
+    </div>
+  );
+}
+
 export function PlaceCard({
   place,
   large = false,
   loadPhotos = true,
 }: PlaceCardProps) {
+  const isRoute = place.type === "route";
+  const searchQuery = useMemo(
+    () => (isRoute ? routePhotoSearchQuery(place) : place.query),
+    [isRoute, place]
+  );
+
   const [status, setStatus] = useState<PhotoStatus>(
-    loadPhotos ? "loading" : "idle"
+    loadPhotos && !place.manualImageUrl ? "loading" : "idle"
   );
   const [placeData, setPlaceData] = useState<PlaceSearchResult | null>(null);
   const [apiError, setApiError] = useState<string | null>(null);
   const [imgError, setImgError] = useState(false);
 
-  const skipPhotoLookup =
-    PHOTO_SKIP_TYPES.has(place.type) || Boolean(place.manualImageUrl);
+  const directionsUrl = isRoute ? routeDirectionsUrl(place) : null;
 
   useEffect(() => {
-    if (!loadPhotos || skipPhotoLookup) {
+    if (!loadPhotos || place.manualImageUrl) {
       setStatus("idle");
       return;
     }
@@ -77,7 +118,7 @@ export function PlaceCard({
     async function fetchPlace() {
       try {
         const res = await fetch(
-          `/api/place-search?query=${encodeURIComponent(place.query)}`
+          `/api/place-search?query=${encodeURIComponent(searchQuery)}`
         );
         const data = await res.json();
         if (cancelled) return;
@@ -113,7 +154,7 @@ export function PlaceCard({
     return () => {
       cancelled = true;
     };
-  }, [place.query, skipPhotoLookup, loadPhotos]);
+  }, [searchQuery, place.manualImageUrl, loadPhotos]);
 
   const photoName = placeData ? getFirstPhotoName(placeData) : null;
   const photoUrl =
@@ -123,13 +164,16 @@ export function PlaceCard({
       : null);
 
   const displayName = placeData
-    ? getPlaceDisplayName(placeData)
+    ? isRoute
+      ? place.name
+      : getPlaceDisplayName(placeData)
     : place.name;
-  const rating = placeData?.rating;
+  const rating = !isRoute ? placeData?.rating : undefined;
   const mapsUrl =
+    directionsUrl ??
     place.mapsUrl ??
     placeData?.googleMapsUri ??
-    googleMapsSearchUrl(place.query);
+    googleMapsSearchUrl(isRoute ? place.name : place.query);
   const attribution = placeData ? getPhotoAttribution(placeData) : null;
 
   const typeLabels: Record<string, string> = {
@@ -142,13 +186,16 @@ export function PlaceCard({
   };
 
   const showFallback =
-    status !== "loading" && (skipPhotoLookup || !photoUrl || imgError);
+    status !== "loading" && (!photoUrl || imgError);
+  const showRouteFallback = isRoute && showFallback && status !== "api_error";
   const photoMessage = photoStatusMessage(
     imgError && status === "ok" ? "no_match" : status,
-    place,
-    skipPhotoLookup,
     apiError
   );
+
+  const mapsButtonLabel = isRoute
+    ? "Open route in Google Maps"
+    : "Open in Google Maps";
 
   return (
     <article
@@ -171,7 +218,10 @@ export function PlaceCard({
             onError={() => setImgError(true)}
           />
         )}
-        {showFallback && (
+        {showFallback && showRouteFallback && (
+          <RouteFallbackPanel place={place} />
+        )}
+        {showFallback && !showRouteFallback && (
           <div className="flex h-full w-full flex-col items-center justify-center gap-2 bg-cream p-4 text-center">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -187,6 +237,11 @@ export function PlaceCard({
             {attribution}
           </p>
         )}
+        {isRoute && photoUrl && !showFallback && (
+          <span className="absolute left-3 top-3 rounded-full bg-forest/90 px-2 py-1 text-xs font-medium text-paper">
+            Route · {parseRouteEndpoints(place.name)?.destination ?? "Today"}
+          </span>
+        )}
       </div>
 
       <div className="p-4">
@@ -201,10 +256,15 @@ export function PlaceCard({
         >
           {displayName}
         </h3>
+        {isRoute && placeData && (
+          <p className="mt-1 text-xs text-muted">
+            Photo: {getPlaceDisplayName(placeData)}
+          </p>
+        )}
         {place.notes && (
           <p className="mt-1 text-sm text-muted">{place.notes}</p>
         )}
-        {placeData?.formattedAddress && (
+        {placeData?.formattedAddress && !isRoute && (
           <p className="mt-1 text-xs text-muted">{placeData.formattedAddress}</p>
         )}
 
@@ -215,16 +275,18 @@ export function PlaceCard({
             rel="noopener noreferrer"
             className="btn-primary text-xs"
           >
-            Open in Google Maps
+            {mapsButtonLabel}
           </a>
-          <a
-            href={googleImageSearchUrl(place.query)}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-secondary text-xs"
-          >
-            Search images
-          </a>
+          {!isRoute && (
+            <a
+              href={googleImageSearchUrl(place.query)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-secondary text-xs"
+            >
+              Search images
+            </a>
+          )}
         </div>
       </div>
     </article>
