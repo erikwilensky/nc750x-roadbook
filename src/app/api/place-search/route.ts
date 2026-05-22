@@ -34,6 +34,8 @@ export async function GET(req: NextRequest) {
       body: JSON.stringify({
         textQuery: query,
         maxResultCount: 1,
+        regionCode: "TH",
+        languageCode: "en",
       }),
     }
   );

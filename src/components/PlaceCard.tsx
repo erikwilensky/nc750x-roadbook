@@ -10,7 +10,8 @@ import {
   type PlaceSearchResult,
 } from "@/lib/googlePlaces";
 import { googleImageSearchUrl, googleMapsSearchUrl } from "@/lib/maps";
-import { MapButton } from "./MapButton";
+
+const PHOTO_SKIP_TYPES = new Set(["route"]);
 
 type PlaceCardProps = {
   place: TripPlace;
@@ -28,8 +29,11 @@ export function PlaceCard({
   const [error, setError] = useState(false);
   const [imgError, setImgError] = useState(false);
 
+  const skipPhotoLookup =
+    PHOTO_SKIP_TYPES.has(place.type) || Boolean(place.manualImageUrl);
+
   useEffect(() => {
-    if (!loadPhotos || place.manualImageUrl) {
+    if (!loadPhotos || skipPhotoLookup) {
       setLoading(false);
       return;
     }
@@ -58,7 +62,7 @@ export function PlaceCard({
     return () => {
       cancelled = true;
     };
-  }, [place.query, place.manualImageUrl, loadPhotos]);
+  }, [place.query, skipPhotoLookup, loadPhotos]);
 
   const photoName = placeData ? getFirstPhotoName(placeData) : null;
   const photoUrl =
@@ -86,7 +90,15 @@ export function PlaceCard({
     town: "Town",
   };
 
-  const showFallback = !loading && (!photoUrl || error || imgError);
+  const showFallback = !loading && (!photoUrl || imgError);
+  const photoMessage =
+    skipPhotoLookup && place.type === "route"
+      ? "Route overview — open Maps for the drive"
+      : error
+        ? "Photo unavailable — check API key / Places API"
+        : placeData && !photoName
+          ? "No place photo from Google"
+          : "Photo unavailable";
 
   return (
     <article
@@ -117,7 +129,7 @@ export function PlaceCard({
               alt=""
               className="h-16 w-16 opacity-60"
             />
-            <p className="text-sm text-muted">Photo unavailable</p>
+            <p className="text-sm text-muted">{photoMessage}</p>
           </div>
         )}
         {attribution && photoUrl && !showFallback && (
@@ -161,9 +173,6 @@ export function PlaceCard({
           >
             Search images
           </a>
-          {!placeData && !loading && (
-            <MapButton query={place.query} className="text-xs" />
-          )}
         </div>
       </div>
     </article>

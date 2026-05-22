@@ -16,9 +16,12 @@ export async function GET(req: NextRequest) {
     );
   }
 
-  const url = `https://places.googleapis.com/v1/${name}/media?maxWidthPx=${encodeURIComponent(maxWidthPx)}&key=${encodeURIComponent(apiKey)}`;
+  const url = `https://places.googleapis.com/v1/${name}/media?maxWidthPx=${encodeURIComponent(maxWidthPx)}`;
 
-  const response = await fetch(url, { redirect: "follow" });
+  const response = await fetch(url, {
+    redirect: "follow",
+    headers: { "X-Goog-Api-Key": apiKey },
+  });
   if (!response.ok) {
     return NextResponse.json(
       { error: "Could not load photo" },
