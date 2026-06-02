@@ -207,25 +207,25 @@ export const trip: TripData = {
     snacksPerDayBaht: 100
   },
   totals: {
-    distanceKm: 2163,
-    fuelUsedL: 72.1,
-    fuelCost: 2883,
+    distanceKm: 2200,
+    fuelUsedL: 73.3,
+    fuelCost: 2933,
     food: 3260,
-    accommodation: 5800,
-    estimatedTotal: 11943,
+    accommodation: 5900,
+    estimatedTotal: 12093,
     contingency: 1500,
-    budgetEnvelope: 13500
+    budgetEnvelope: 13600
   },
   phases: [
     {
       title: 'Northbound',
       days: 'Days 1–4',
-      route: 'Bangkok → Uthai Thani → Sukhothai → Lampang → Chiang Mai'
+      route: 'Bangkok → Nakhon Sawan → Sukhothai → Lamphun → Mae Chaem'
     },
     {
       title: 'Mountain Core',
       days: 'Days 5–10',
-      route: 'Chiang Mai → Doi Inthanon → Mae Chaem → Mae Sariang → Mae Hong Son → Pai → Chiang Mai'
+      route: 'Mae Chaem → Khun Yuam → Mae Hong Son → Pai → Chiang Mai'
     },
     {
       title: 'Southbound',
@@ -237,20 +237,20 @@ export const trip: TripData = {
     {
       day: 1,
       date: 'Sun 21 Jun',
-      title: 'Bangkok to Uthai Thani',
-      route: 'Bangkok → Uthai Thani',
-      distanceKm: 220,
-      overnight: 'Uthai Thani',
+      title: 'Bangkok to Nakhon Sawan',
+      route: 'Bangkok → Nakhon Sawan',
+      distanceKm: 245,
+      overnight: 'Nakhon Sawan',
       departureTarget: '06:00',
       arrivalTarget: 'Lunch / early afternoon',
-      stay: 'C2U Hotel Uthai Thani',
-      costs: { fuel: 293, food: 240, hotel: 450, total: 983 },
-      highlights: ['Bangkok dawn departure', 'Chao Phraya / Chainat riverside', 'Sakae Krang River'],
+      stay: 'Hop Inn Nakhon Sawan',
+      costs: { fuel: 327, food: 240, hotel: 550, total: 1117 },
+      highlights: ['Bangkok dawn departure', 'Chao Phraya / Chainat riverside', 'Nakhon Sawan arrival'],
       ridingNotes: ['Escape Bangkok early.', 'Keep the first day easy.', 'Arrive with energy rather than pride.'],
       food: {
         primary: {
-          name: 'Ko Ti Khao Man Gai Uthai Thani',
-          query: 'Ko Ti Khao Man Gai Uthai Thani',
+          name: 'Nakhon Sawan easy dinner target',
+          query: 'Nakhon Sawan khao man gai',
           whySpecial: 'Cheap, fast, simple Thai road food.',
           orderSuggestion: 'Khao man gai with soup; extra chicken if hungry.',
           viewOrVibe: 'Local shop, practical rather than scenic.',
@@ -258,16 +258,16 @@ export const trip: TripData = {
         },
         backups: [
           {
-            name: 'Nok Noi Restaurant',
-            query: 'Nok Noi Restaurant Uthai Thani',
+            name: 'Nakhon Sawan riverside restaurants',
+            query: 'Nakhon Sawan riverside restaurant',
             whySpecial: 'Useful backup for general Thai dishes.',
             orderSuggestion: 'Stir-fried rice dishes or noodles.',
             viewOrVibe: 'Local restaurant feel.',
             riderNote: 'Use if the chicken rice place is closed.'
           },
           {
-            name: 'Pa Samran Restaurant',
-            query: 'Pa Samran Restaurant Uthai Thani',
+            name: 'Central Nakhon Sawan food court',
+            query: 'Central Nakhon Sawan food court',
             whySpecial: 'Better if you want a fuller Thai meal.',
             orderSuggestion: 'Local fish or shared Thai dishes.',
             viewOrVibe: 'More of a sit-down restaurant.',
@@ -288,9 +288,9 @@ export const trip: TripData = {
         },
         {
           role: 'arrival',
-          name: 'Sakae Krang riverside café',
-          query: 'Sakae Krang River cafe Uthai Thani',
-          note: 'Arrival coffee near the river.',
+          name: 'Nakhon Sawan arrival café',
+          query: 'Nakhon Sawan cafe',
+          note: 'Arrival coffee in Nakhon Sawan.',
           whySpecial: "Good decompression stop after the first day's ride.",
           orderSuggestion: 'Iced coffee, soft drink, or cold water.',
           viewOrVibe: 'Riverside / slow-town arrival feeling.',
@@ -298,22 +298,22 @@ export const trip: TripData = {
         }
       ],
       places: [
-        { id: 'd1-route', type: 'route', name: 'Bangkok to Uthai Thani route', query: 'Bangkok to Uthai Thani driving route' },
-        { id: 'd1-hotel', type: 'hotel', name: 'C2U Hotel Uthai Thani', query: 'C2U Hotel Uthai Thani' },
-        { id: 'd1-view', type: 'viewpoint', name: 'Sakae Krang River', query: 'Sakae Krang River Uthai Thani' }
+        { id: 'd1-route', type: 'route', name: 'Bangkok to Nakhon Sawan route', query: 'Bangkok to Nakhon Sawan driving route' },
+        { id: 'd1-hotel', type: 'hotel', name: 'Hop Inn Nakhon Sawan', query: 'Hop Inn Nakhon Sawan' },
+        { id: 'd1-view', type: 'viewpoint', name: 'Nakhon Sawan river viewpoint', query: 'Nakhon Sawan river viewpoint' }
       ]
     },
     {
       day: 2,
       date: 'Mon 22 Jun',
-      title: 'Uthai Thani to Sukhothai',
-      route: 'Uthai Thani → Sukhothai',
-      distanceKm: 225,
+      title: 'Nakhon Sawan to Sukhothai',
+      route: 'Nakhon Sawan → Sukhothai',
+      distanceKm: 250,
       overnight: 'Sukhothai',
       departureTarget: '07:00',
       arrivalTarget: 'Early afternoon',
       stay: 'Old City Guest House',
-      costs: { fuel: 300, food: 240, hotel: 450, total: 990 },
+      costs: { fuel: 333, food: 240, hotel: 450, total: 1023 },
       highlights: ['Kamphaeng Phet stop', 'Sukhothai Historical Park'],
       ridingNotes: ['Comfortable cultural riding day.', 'Use Kamphaeng Phet as a natural pause.'],
       food: {
@@ -353,7 +353,7 @@ export const trip: TripData = {
           whySpecial: 'Good place to break the ride before continuing north.',
           orderSuggestion: 'Iced latte, iced Americano, or Thai tea.',
           viewOrVibe: 'Riverside / old-town pause if you choose the right café.',
-          riderNote: 'Use as the main rest stop between Uthai Thani and Sukhothai.'
+          riderNote: 'Use as the main rest stop between Nakhon Sawan and Sukhothai.'
         },
         {
           role: 'arrival',
@@ -367,7 +367,7 @@ export const trip: TripData = {
         }
       ],
       places: [
-        { id: 'd2-route', type: 'route', name: 'Uthai Thani to Sukhothai route', query: 'Uthai Thani to Sukhothai driving route' },
+        { id: 'd2-route', type: 'route', name: 'Nakhon Sawan to Sukhothai route', query: 'Nakhon Sawan to Sukhothai driving route' },
         { id: 'd2-hotel', type: 'hotel', name: 'Old City Guest House', query: 'Old City Guest House Sukhothai' },
         { id: 'd2-view', type: 'viewpoint', name: 'Sukhothai Historical Park', query: 'Sukhothai Historical Park' }
       ]
@@ -375,38 +375,38 @@ export const trip: TripData = {
     {
       day: 3,
       date: 'Tue 23 Jun',
-      title: 'Sukhothai to Lampang',
-      route: 'Sukhothai → Lampang',
-      distanceKm: 198,
-      overnight: 'Lampang',
+      title: 'Sukhothai to Lamphun',
+      route: 'Sukhothai → Lamphun',
+      distanceKm: 260,
+      overnight: 'Lamphun',
       departureTarget: '07:00',
       arrivalTarget: 'Early afternoon',
-      stay: 'Asia Lampang Hotel',
-      costs: { fuel: 264, food: 240, hotel: 400, total: 904 },
-      highlights: ['Northern approach', 'Lampang riverside', 'Old town atmosphere'],
+      stay: 'Lamphun hotel (TBD)',
+      costs: { fuel: 347, food: 240, hotel: 450, total: 1037 },
+      highlights: ['Northern approach', 'Lamphun old-town atmosphere'],
       ridingNotes: ['The road begins to feel more northern.', 'Keep this day relaxed.'],
       food: {
         primary: {
-          name: 'Aroy One Baht',
-          query: 'Aroy One Baht Lampang',
-          whySpecial: 'Cheap local Thai food with road-trip practicality.',
+          name: 'Lamphun easy dinner target',
+          query: 'Lamphun Thai restaurant',
+          whySpecial: 'Simple Thai road food after a transit day.',
           orderSuggestion: 'Rice plates, noodles, or simple stir-fried dishes.',
           viewOrVibe: 'Local, budget, no-fuss.',
-          riderNote: 'Good if you want to keep the budget tight.'
+          riderNote: 'Keep it simple and sleep early.'
         },
         backups: [
           {
-            name: 'Jay Noy / ร้านเจ้น้อย',
-            query: 'Jay Noy Lampang Thai food',
-            whySpecial: 'Homestyle northern Thai option.',
+            name: 'Lamphun night market area',
+            query: 'Lamphun night market food',
+            whySpecial: 'Flexible choices if you arrive early.',
             orderSuggestion: 'Northern curry, grilled items, or local soups.',
             viewOrVibe: 'Local northern Thai meal.',
-            riderNote: 'Better if you want something more regional than a basic rice plate.'
+            riderNote: 'Best if you want choices without committing to one place.'
           },
           {
-            name: 'Chahom & Kenghom Bistro',
-            query: 'Chahom Kenghom Bistro Lampang',
-            whySpecial: 'More polished option for a nicer dinner.',
+            name: 'Lamphun café/restaurant backup',
+            query: 'Lamphun cafe restaurant',
+            whySpecial: 'Fallback if markets are closed or weather is bad.',
             orderSuggestion: 'Northern Thai dishes or house specials.',
             viewOrVibe: 'Bistro / relaxed dinner.',
             riderNote: 'Use if you want a comfort upgrade.'
@@ -419,109 +419,39 @@ export const trip: TripData = {
           name: 'Uttaradit town coffee stop',
           query: 'Uttaradit coffee shop',
           note: 'Practical mid-route stop.',
-          whySpecial: 'Breaks the ride before the northern approach into Lampang.',
+          whySpecial: 'Breaks the ride before the northern approach into Lamphun.',
           orderSuggestion: 'Iced Americano or espresso yen.',
           viewOrVibe: 'Functional town coffee stop.',
           riderNote: 'Choose based on parking and shade rather than brand name.'
         },
         {
           role: 'arrival',
-          name: 'Wooden House Café',
-          query: 'Wooden House Cafe Lampang',
-          note: 'Arrival café in Lampang.',
-          whySpecial: 'Atmospheric Lampang café stop after the riding day.',
+          name: 'Lamphun arrival café',
+          query: 'Lamphun cafe',
+          note: 'Arrival café in Lamphun.',
+          whySpecial: 'Good landing point after the riding day.',
           orderSuggestion: 'Iced coffee and cake if available.',
           viewOrVibe: 'Wooden house / riverside or old-town charm.',
           riderNote: 'Good arrival reward before the evening walk.'
         }
       ],
       places: [
-        { id: 'd3-route', type: 'route', name: 'Sukhothai to Lampang route', query: 'Sukhothai to Lampang driving route' },
-        { id: 'd3-hotel', type: 'hotel', name: 'Asia Lampang Hotel', query: 'Asia Lampang Hotel' },
-        { id: 'd3-view', type: 'viewpoint', name: 'Lampang riverside / old bridge', query: 'Ratsadaphisek Bridge Lampang' }
+        { id: 'd3-route', type: 'route', name: 'Sukhothai to Lamphun route', query: 'Sukhothai to Lamphun driving route' },
+        { id: 'd3-hotel', type: 'hotel', name: 'Lamphun hotel (TBD)', query: 'Lamphun hotel' },
+        { id: 'd3-view', type: 'viewpoint', name: 'Lamphun old town', query: 'Lamphun old town' }
       ]
     },
     {
       day: 4,
       date: 'Wed 24 Jun',
-      title: 'Lampang to Chiang Mai',
-      route: 'Lampang → Chiang Mai',
-      distanceKm: 100,
-      overnight: 'Chiang Mai',
-      departureTarget: '08:00',
-      arrivalTarget: 'Before lunch',
-      stay: 'B2 Budget Hotel Chiang Mai',
-      costs: { fuel: 133, food: 260, hotel: 550, total: 943 },
-      highlights: ['Mae Tha corridor', 'Easy arrival', 'Chiang Mai city'],
-      ridingNotes: ['Short positioning day.', 'Use the afternoon for laundry, bike checks, and rain gear reset.'],
-      food: {
-        primary: {
-          name: 'Huen Muan Jai',
-          query: 'Huen Muan Jai Chiang Mai',
-          whySpecial: 'Good northern Thai dinner after reaching Chiang Mai.',
-          orderSuggestion: 'Khao soi, sai ua, nam prik, northern curry.',
-          viewOrVibe: 'Classic northern Thai restaurant feel.',
-          riderNote: 'Go early if possible; it can be popular.'
-        },
-        backups: [
-          {
-            name: 'SP Chicken',
-            query: 'SP Chicken Chiang Mai',
-            whySpecial: 'Simple, protein-heavy, reliable Chiang Mai meal.',
-            orderSuggestion: 'Roast chicken, som tam, sticky rice.',
-            viewOrVibe: 'Casual local institution.',
-            riderNote: 'Great when you want food that does not require decision-making.'
-          },
-          {
-            name: 'Chang Phueak Gate food stalls',
-            query: 'Chang Phueak Gate food stalls Chiang Mai',
-            whySpecial: 'Cheap and flexible.',
-            orderSuggestion: 'Rice plates, noodles, grilled pork, fruit shakes.',
-            viewOrVibe: 'Street-food evening energy.',
-            riderNote: 'Good if staying nearby and you want easy parking/walking.'
-          }
-        ]
-      },
-      dayCoffeeNote: 'Short ride: one true stop plus an arrival café is enough.',
-      coffeeStops: [
-        {
-          role: 'mid_route',
-          name: 'Thin Thai Coffee',
-          query: 'Thin Thai Coffee Mae Tha Lampang',
-          note: 'Best actual route stop on the short Lampang to Chiang Mai leg.',
-          whySpecial: 'Proper coffee stop in the Mae Tha corridor.',
-          orderSuggestion: 'Hot or iced espresso drink.',
-          viewOrVibe: 'Green roadside café atmosphere.',
-          riderNote: 'Since the ride is short, this can be the only real road stop.'
-        },
-        {
-          role: 'arrival',
-          name: 'Chiang Mai arrival café',
-          query: 'Chiang Mai cafe near Santitham',
-          note: 'Flexible arrival café near the hotel zone.',
-          whySpecial: 'Lets you settle into Chiang Mai without crossing town for a famous café.',
-          orderSuggestion: 'Iced coffee, water, snack.',
-          viewOrVibe: 'Depends on hotel area; choose easy parking.',
-          riderNote: 'Pick based on location, not Instagram sparkle.'
-        }
-      ],
-      places: [
-        { id: 'd4-route', type: 'route', name: 'Lampang to Chiang Mai route', query: 'Lampang to Chiang Mai driving route Mae Tha' },
-        { id: 'd4-hotel', type: 'hotel', name: 'B2 Budget Hotel Chiang Mai', query: 'B2 Budget Hotel Chiang Mai' },
-        { id: 'd4-view', type: 'viewpoint', name: 'Chiang Mai old city moat', query: 'Chiang Mai old city moat' }
-      ]
-    },
-    {
-      day: 5,
-      date: 'Thu 25 Jun',
-      title: 'Chiang Mai to Mae Chaem',
-      route: 'Chiang Mai → Doi Inthanon → Mae Chaem',
-      distanceKm: 140,
+      title: 'Lamphun to Mae Chaem (via Doi Inthanon)',
+      route: 'Lamphun → Doi Inthanon → Mae Chaem',
+      distanceKm: 200,
       overnight: 'Mae Chaem',
       departureTarget: '07:00',
       arrivalTarget: 'Early afternoon',
       stay: 'The Nutthasin Mae Chaem',
-      costs: { fuel: 187, food: 240, hotel: 350, total: 777 },
+      costs: { fuel: 267, food: 240, hotel: 350, total: 857 },
       highlights: ['Doi Inthanon summit', 'Mountain descent', 'Mae Chaem valley'],
       ridingNotes: ['Rainy-season mountain day.', 'Watch for wet leaves, fog, gravel, and slippery paint.'],
       food: {
@@ -575,60 +505,60 @@ export const trip: TripData = {
         }
       ],
       places: [
-        { id: 'd5-route', type: 'route', name: 'Chiang Mai to Mae Chaem via Doi Inthanon route', query: 'Chiang Mai Doi Inthanon Mae Chaem route' },
-        { id: 'd5-hotel', type: 'hotel', name: 'The Nutthasin Mae Chaem', query: 'The Nutthasin Mae Chaem' },
-        { id: 'd5-view', type: 'viewpoint', name: 'Doi Inthanon Twin Pagodas', query: 'Doi Inthanon Twin Pagodas' }
+        { id: 'd4-route', type: 'route', name: 'Lamphun to Mae Chaem via Doi Inthanon route', query: 'Lamphun Doi Inthanon Mae Chaem route' },
+        { id: 'd4-hotel', type: 'hotel', name: 'The Nutthasin Mae Chaem', query: 'The Nutthasin Mae Chaem' },
+        { id: 'd4-view', type: 'viewpoint', name: 'Doi Inthanon Twin Pagodas', query: 'Doi Inthanon Twin Pagodas' }
       ]
     },
     {
-      day: 6,
-      date: 'Fri 26 Jun',
-      title: 'Mae Chaem to Mae Sariang',
-      route: 'Mae Chaem → Mae Sariang',
-      distanceKm: 130,
-      overnight: 'Mae Sariang',
-      departureTarget: '07:30',
+      day: 5,
+      date: 'Thu 25 Jun',
+      title: 'Mae Chaem to Khun Yuam',
+      route: 'Mae Chaem → Khun Yuam',
+      distanceKm: 150,
+      overnight: 'Khun Yuam',
+      departureTarget: '07:00',
       arrivalTarget: 'Early afternoon',
-      stay: 'Riverbank Resort',
-      costs: { fuel: 173, food: 240, hotel: 500, total: 913 },
-      highlights: ['Terraced hills', 'Quiet back roads', 'Mae Sariang riverside'],
-      ridingNotes: ['Quiet rural road texture day.', 'Stop only at safe shoulders with real views.'],
+      stay: 'Khun Yuam hotel (TBD)',
+      costs: { fuel: 200, food: 240, hotel: 500, total: 940 },
+      highlights: ['Quiet back roads', 'Khun Yuam arrival'],
+      ridingNotes: ['Rural road texture day.', 'Stop only at safe shoulders with real views.'],
       food: {
         primary: {
-          name: 'Inthira / Intira Restaurant',
-          query: 'Inthira Restaurant Mae Sariang',
-          whySpecial: 'Strong local Thai choice in Mae Sariang.',
-          orderSuggestion: 'Thai stir-fries, curries, or local dishes.',
-          viewOrVibe: 'Local restaurant, good proper dinner.',
-          riderNote: 'Good main dinner target after the quiet back-road day.'
+          name: 'Khun Yuam local dinner target',
+          query: 'Khun Yuam restaurant',
+          whySpecial: 'Simple small-town Thai food after a rural riding day.',
+          orderSuggestion: 'Rice plates, noodles, or soup.',
+          viewOrVibe: 'Small-town, practical.',
+          riderNote: 'Eat early; options can close earlier than tourist towns.'
         },
         backups: [
           {
-            name: 'Cowboy Night',
-            query: 'Cowboy Night Mae Sariang',
-            whySpecial: 'Riverside-style Thai food and evening atmosphere.',
-            orderSuggestion: 'Thai dishes, grilled food, cold drink.',
-            viewOrVibe: 'Country-pub / riverside energy.',
-            riderNote: 'Ask for less spicy if tired.'
+            name: 'Khun Yuam market area',
+            query: 'Khun Yuam market food',
+            whySpecial: 'Flexible backup if you want choices.',
+            orderSuggestion: 'Whatever is open; prioritize water and salt.',
+            viewOrVibe: 'Local evening food.',
+            riderNote: 'Use if you arrive early and want quick, cheap food.'
           },
           {
-            name: 'Coriander in Redwood',
-            query: 'Coriander in Redwood Mae Sariang',
-            whySpecial: 'More polished backup with Thai and western-style choices.',
-            orderSuggestion: 'Thai dishes or steak-style comfort food.',
-            viewOrVibe: 'Relaxed restaurant setting.',
-            riderNote: 'Use if you want a less basic dinner.'
+            name: 'Hotel dinner fallback',
+            query: 'Khun Yuam hotel restaurant',
+            whySpecial: 'Easy option if weather is bad.',
+            orderSuggestion: 'Basic Thai dishes.',
+            viewOrVibe: 'Practical fallback.',
+            riderNote: 'Use if you are tired and done making decisions.'
           }
         ]
       },
       dayCoffeeNote:
-        'Rural leg: if the mid-route café is closed, use any safe roadside stop with shade, water, and parking.',
+        'Rural leg: if a planned café is closed, use any safe stop with shade, water, and parking.',
       coffeeStops: [
         {
           role: 'mid_route',
-          name: 'Mae Na Chon / rural coffee stop if open',
+          name: 'Rural coffee stop if open',
           query: 'Mae Na Chon coffee',
-          note: 'Rural mid-route stop. Flexible because small cafés may be closed.',
+          note: 'Flexible mid-route stop. Small cafés may be closed.',
           whySpecial: 'Useful pause on a quiet rural leg.',
           orderSuggestion: 'Whatever coffee is available; prioritize water.',
           viewOrVibe: 'Rural roadside / village atmosphere.',
@@ -636,34 +566,34 @@ export const trip: TripData = {
         },
         {
           role: 'arrival',
-          name: 'Sook Coffee Mae Sariang',
-          query: 'Sook Coffee Mae Sariang',
-          note: 'Reliable arrival coffee in Mae Sariang.',
-          whySpecial: 'Good motorcycle-traveler arrival stop.',
-          orderSuggestion: 'Iced coffee or smoothie.',
-          viewOrVibe: 'Small-town café, easy decompression.',
-          riderNote: 'Use after check-in or before walking the riverside.'
+          name: 'Khun Yuam coffee stop',
+          query: 'Khun Yuam coffee',
+          note: 'Arrival coffee in Khun Yuam.',
+          whySpecial: 'Good reset after the rural leg.',
+          orderSuggestion: 'Iced coffee or cold drink.',
+          viewOrVibe: 'Mountain-town reset point.',
+          riderNote: 'Pick based on shade and easy parking.'
         }
       ],
       places: [
-        { id: 'd6-route', type: 'route', name: 'Mae Chaem to Mae Sariang route', query: 'Mae Chaem to Mae Sariang motorcycle route' },
-        { id: 'd6-hotel', type: 'hotel', name: 'Riverbank Resort', query: 'Riverbank Resort Mae Sariang' },
-        { id: 'd6-view', type: 'viewpoint', name: 'Mae Sariang riverside', query: 'Mae Sariang riverside' }
+        { id: 'd5-route', type: 'route', name: 'Mae Chaem to Khun Yuam route', query: 'Mae Chaem to Khun Yuam route' },
+        { id: 'd5-hotel', type: 'hotel', name: 'Khun Yuam hotel (TBD)', query: 'Khun Yuam hotel' },
+        { id: 'd5-view', type: 'viewpoint', name: 'Khun Yuam town', query: 'Khun Yuam Thailand' }
       ]
     },
     {
-      day: 7,
-      date: 'Sat 27 Jun',
-      title: 'Mae Sariang to Mae Hong Son',
-      route: 'Mae Sariang → Mae Hong Son',
-      distanceKm: 160,
+      day: 6,
+      date: 'Fri 26 Jun',
+      title: 'Khun Yuam to Mae Hong Son',
+      route: 'Khun Yuam → Mae Hong Son',
+      distanceKm: 65,
       overnight: 'Mae Hong Son',
-      departureTarget: '07:00',
-      arrivalTarget: '14:00–15:00',
+      departureTarget: '07:30',
+      arrivalTarget: 'Early afternoon',
       stay: 'Northern Hill Guesthouse',
-      costs: { fuel: 213, food: 260, hotel: 500, total: 973 },
-      highlights: ['Highway 108 curves', 'Khun Yuam valley', 'Jong Kham Lake'],
-      ridingNotes: ['Longest mountain day.', 'Do not chase speed. Keep braking smooth and arrive early.'],
+      costs: { fuel: 87, food: 260, hotel: 500, total: 847 },
+      highlights: ['Short mountain leg', 'Mae Hong Son arrival'],
+      ridingNotes: ['Short distance, still mountain focus.', 'Arrive early and use the afternoon for recovery.'],
       food: {
         primary: {
           name: 'Salween River Restaurant',
@@ -671,7 +601,7 @@ export const trip: TripData = {
           whySpecial: 'Classic Mae Hong Son rider stop with Thai/Shan/Burmese-style food.',
           orderSuggestion: 'Shan-style dishes, curry, rice dishes.',
           viewOrVibe: 'Traveler-friendly, relaxed, borderland food feel.',
-          riderNote: 'Good first choice after the longest mountain day.'
+          riderNote: 'Good first choice after arriving in Mae Hong Son.'
         },
         backups: [
           {
@@ -692,39 +622,101 @@ export const trip: TripData = {
           }
         ]
       },
-      departureOption: {
-        name: 'Screw and Brew',
-        query: 'Screw and Brew Mae Sariang',
-        note: 'Good departure coffee before leaving Mae Sariang, but not a true route split stop.',
-        whySpecial: 'Nice way to start the day before the long mountain leg.',
-        orderSuggestion: 'Espresso-based drink.',
-        viewOrVibe: 'Mae Sariang café start.',
-        riderNote: 'Only use if you are still leaving early.'
-      },
+      dayCoffeeNote: 'Short leg: one true stop plus an arrival café is enough.',
       coffeeStops: [
         {
           role: 'mid_route',
-          name: 'Khun Yuam coffee stop',
+          name: 'Khun Yuam departure coffee',
           query: 'Khun Yuam coffee',
-          note: 'Proper mid-route coffee/fuel/rest stop between Mae Sariang and Mae Hong Son.',
-          whySpecial: 'Best practical break on the longest mountain day.',
-          orderSuggestion: 'Iced coffee, water, simple snack.',
-          viewOrVibe: 'Mountain-town reset point.',
-          riderNote: 'Treat this as a real rest, not a quick sip.'
+          note: 'Optional departure coffee before leaving town.',
+          whySpecial: 'Easy start before the final short mountain run into Mae Hong Son.',
+          orderSuggestion: 'Iced coffee and water.',
+          viewOrVibe: 'Mountain-town morning.',
+          riderNote: 'Only stop if it does not delay the day.'
         },
         {
           role: 'arrival',
           name: 'Mae Hong Son lake-area café',
           query: 'Jong Kham Lake cafe Mae Hong Son',
           note: 'Arrival café near Jong Kham Lake.',
-          whySpecial: 'Good landing point after Highway 108.',
+          whySpecial: 'Good landing point after the road.',
           orderSuggestion: 'Iced coffee or cold drink.',
           viewOrVibe: 'Lake-area / Mae Hong Son town atmosphere.',
           riderNote: 'Perfect before the evening lake walk.'
         }
       ],
       places: [
-        { id: 'd7-route', type: 'route', name: 'Mae Sariang to Mae Hong Son via Highway 108', query: 'Highway 108 Mae Sariang Mae Hong Son' },
+        { id: 'd6-route', type: 'route', name: 'Khun Yuam to Mae Hong Son route', query: 'Khun Yuam to Mae Hong Son route' },
+        { id: 'd6-hotel', type: 'hotel', name: 'Northern Hill Guesthouse', query: 'Northern Hill Guesthouse Mae Hong Son' },
+        { id: 'd6-view', type: 'viewpoint', name: 'Jong Kham Lake', query: 'Jong Kham Lake Mae Hong Son' }
+      ]
+    },
+    {
+      day: 7,
+      date: 'Sat 27 Jun',
+      title: 'Mae Hong Son Local Day',
+      route: 'Mae Hong Son local day',
+      distanceKm: 40,
+      overnight: 'Mae Hong Son',
+      departureTarget: 'No early start required',
+      arrivalTarget: 'Stay in Mae Hong Son',
+      stay: 'Northern Hill Guesthouse',
+      costs: { fuel: 53, food: 260, hotel: 500, total: 813 },
+      highlights: ['Recovery day', 'Jong Kham Lake', 'Town reset'],
+      ridingNotes: ['Keep it local and light.', 'Use this day to recover rather than accumulate kilometers.'],
+      food: {
+        primary: {
+          name: 'Salween River Restaurant',
+          query: 'Salween River Restaurant Mae Hong Son',
+          whySpecial: 'Classic Mae Hong Son rider stop with Thai/Shan/Burmese-style food.',
+          orderSuggestion: 'Shan-style dishes, curry, rice dishes.',
+          viewOrVibe: 'Traveler-friendly, relaxed, borderland food feel.',
+          riderNote: 'Good simple dinner choice on the local day.'
+        },
+        backups: [
+          {
+            name: 'Sang Tong Huts restaurant',
+            query: 'Sang Tong Huts Mae Hong Son restaurant',
+            whySpecial: 'Thai and Shan dishes in a garden-style setting.',
+            orderSuggestion: 'Thai/Shan dishes or house recommendations.',
+            viewOrVibe: 'Quiet garden atmosphere.',
+            riderNote: 'Check if open before committing.'
+          },
+          {
+            name: 'Jong Kham Lake night food area',
+            query: 'Jong Kham Lake food Mae Hong Son',
+            whySpecial: 'Easy evening food near the lake.',
+            orderSuggestion: 'Noodles, rice dishes, snacks.',
+            viewOrVibe: 'Lakeside evening walk energy.',
+            riderNote: 'Best backup if you want to stay near the hotel/lake.'
+          }
+        ]
+      },
+      dayCoffeeNote: 'Local cafés only. Keep this as the recovery day.',
+      coffeeStops: [
+        {
+          role: 'local_day',
+          name: 'Mae Hong Son morning café',
+          query: 'Mae Hong Son cafe',
+          note: 'Morning coffee for the relaxed local day.',
+          whySpecial: 'Slow start and recovery day pacing.',
+          orderSuggestion: 'Coffee plus breakfast if available.',
+          viewOrVibe: 'Town café vibe.',
+          riderNote: 'Do not rush today; save energy for the Pai road tomorrow.'
+        },
+        {
+          role: 'local_day',
+          name: 'Mae Hong Son lake-area café',
+          query: 'Jong Kham Lake cafe Mae Hong Son',
+          note: 'Second relaxed café option near the lake.',
+          whySpecial: 'Easy afternoon stop without needing to ride.',
+          orderSuggestion: 'Iced drink and water.',
+          viewOrVibe: 'Lake-area / Mae Hong Son town atmosphere.',
+          riderNote: 'Good before the evening lake walk.'
+        }
+      ],
+      places: [
+        { id: 'd7-route', type: 'route', name: 'Mae Hong Son local day', query: 'Mae Hong Son Thailand' },
         { id: 'd7-hotel', type: 'hotel', name: 'Northern Hill Guesthouse', query: 'Northern Hill Guesthouse Mae Hong Son' },
         { id: 'd7-view', type: 'viewpoint', name: 'Jong Kham Lake', query: 'Jong Kham Lake Mae Hong Son' }
       ]

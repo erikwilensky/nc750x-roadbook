@@ -5,6 +5,7 @@ export const TOWN_COORDS: Record<string, { lat: number; lng: number; label: stri
   sukhothai: { lat: 17.0196, lng: 99.7036, label: "Sukhothai Old City" },
   uttaradit: { lat: 17.6256, lng: 100.0993, label: "Uttaradit" },
   lampang: { lat: 18.2888, lng: 99.4909, label: "Lampang" },
+  lamphun: { lat: 18.5745, lng: 99.0087, label: "Lamphun" },
   chiangMai: { lat: 18.7883, lng: 98.9853, label: "Chiang Mai" },
   doiInthanon: { lat: 18.5889, lng: 98.4867, label: "Doi Inthanon" },
   maeChaem: { lat: 18.499, lng: 98.361, label: "Mae Chaem" },
