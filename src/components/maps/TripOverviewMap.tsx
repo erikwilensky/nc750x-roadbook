@@ -10,8 +10,9 @@ import {
   useMap,
 } from "react-leaflet";
 import type { LatLngTuple } from "leaflet";
-import { trip } from "@/data/trip";
 import { dayMapsByNumber } from "@/data/dayMaps";
+import { useLocale } from "@/i18n/LocaleProvider";
+import { useTripData } from "@/i18n/useTripData";
 import { setupLeafletIcons, markerDivIcon } from "@/lib/leafletSetup";
 import { MAP_MARKER_COLORS } from "./MapLegend";
 
@@ -47,6 +48,9 @@ export function TripOverviewMap({
     setupLeafletIcons();
   }, []);
 
+  const { t } = useLocale();
+  const trip = useTripData();
+
   const allPositions = useMemo(() => {
     const pts: LatLngTuple[] = [];
     trip.days.forEach((d) => {
@@ -54,7 +58,7 @@ export function TripOverviewMap({
       dm.routePolyline.forEach((p) => pts.push(p as LatLngTuple));
     });
     return pts;
-  }, []);
+  }, [trip.days]);
 
   const overnightMarkers = useMemo(
     () =>
@@ -62,7 +66,7 @@ export function TripOverviewMap({
         const end = dayMapsByNumber[d.day].end;
         return { day: d.day, title: d.title, ...end };
       }),
-    []
+    [trip.days]
   );
 
   return (
@@ -108,7 +112,7 @@ export function TripOverviewMap({
           >
             <Popup>
               <p className="text-sm font-semibold text-forest">
-                Day {m.day}: {m.title}
+                {t.common.day} {m.day}: {m.title}
               </p>
               <p className="text-xs text-muted">{m.name}</p>
               {onSelectDay && (
@@ -117,7 +121,7 @@ export function TripOverviewMap({
                   className="map-popup-btn mt-2"
                   onClick={() => onSelectDay(m.day)}
                 >
-                  View day map
+                  {t.map.viewDayMap}
                 </button>
               )}
             </Popup>

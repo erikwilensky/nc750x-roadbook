@@ -3,7 +3,9 @@
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { getTripDays, type TripDayEnriched } from "@/data/trip";
+import type { TripDayEnriched } from "@/data/trip";
+import { useLocale } from "@/i18n/LocaleProvider";
+import { useTripDays } from "@/i18n/useTripData";
 import {
   getTodayTripDay,
   isDayCompleted,
@@ -22,7 +24,8 @@ import { CoffeeStrategy } from "./CoffeeStrategy";
 
 export function TodayMode() {
   const searchParams = useSearchParams();
-  const days = getTripDays();
+  const { t } = useLocale();
+  const days = useTripDays();
   const [activeDay, setActiveDay] = useState<TripDayEnriched>(() =>
     getTodayTripDay(days)
   );
@@ -83,7 +86,7 @@ export function TodayMode() {
     <div className="today-mode -mx-4 sm:mx-0">
       <div className="today-day-picker sticky top-[57px] z-40 border-b border-line bg-paper/95 px-4 py-3 backdrop-blur">
         <label htmlFor="today-day-select" className="sr-only">
-          Select day
+          {t.today.selectDay}
         </label>
         <select
           id="today-day-select"
@@ -93,7 +96,7 @@ export function TodayMode() {
         >
           {days.map((d) => (
             <option key={d.day} value={d.day}>
-              Day {d.day} · {d.date} — {d.title}
+              {t.common.day} {d.day} · {d.date} — {d.title}
             </option>
           ))}
         </select>
@@ -111,13 +114,13 @@ export function TodayMode() {
             rel="noopener noreferrer"
             className="today-action-btn btn-primary w-full text-center"
           >
-            Open day route in Google Maps
+            {t.today.openRoute}
           </a>
           <Link
             href={`/day/${activeDay.day}`}
             className="today-action-btn btn-secondary w-full text-center"
           >
-            Show full day details
+            {t.today.fullDetails}
           </Link>
           <button
             type="button"
@@ -125,14 +128,14 @@ export function TodayMode() {
             onClick={requestLocation}
             disabled={locationLoading}
           >
-            {locationLoading ? "Locating…" : "Use current location"}
+            {locationLoading ? t.today.locating : t.today.useLocation}
           </button>
           <button
             type="button"
             className={`today-action-btn w-full ${completed ? "btn-secondary" : "btn-primary"}`}
             onClick={toggleCompleted}
           >
-            {completed ? "Unmark day completed" : "Mark day completed"}
+            {completed ? t.today.unmarkComplete : t.today.markComplete}
           </button>
         </div>
 
@@ -147,15 +150,14 @@ export function TodayMode() {
         <WeatherPanel weather={activeDay.weather} compact />
 
         <section className="card p-4">
-          <h3 className="text-sm font-semibold text-forest">Coffee strategy</h3>
+          <h3 className="text-sm font-semibold text-forest">{t.common.coffeeStrategy}</h3>
           <div className="mt-2">
             <CoffeeStrategy day={activeDay} compact />
           </div>
         </section>
 
         <p className="text-xs text-muted border-l-2 border-gold pl-3">
-          Fuel rule: fill every morning before leaving town, especially before
-          mountain legs.
+          {t.today.fuelRule}
         </p>
       </div>
     </div>

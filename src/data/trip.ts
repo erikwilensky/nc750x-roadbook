@@ -1,4 +1,6 @@
 import { dayMapsByNumber } from "./dayMaps";
+import type { Locale } from "@/i18n/locale";
+import { getTripData } from "@/i18n/localizeTrip";
 
 export type PlaceType = 'hotel' | 'viewpoint' | 'route' | 'town';
 
@@ -195,11 +197,11 @@ export type TripData = {
 
 export const trip: TripData = {
   title: 'Bangkok to Mae Hong Son Loop',
-  subtitle: '13-Day Honda NC750X Ride Plan',
+  subtitle: '14-Day Honda NC750X Ride Plan',
   bike: 'Honda NC750X',
-  dates: '21 June – 3 July 2026',
+  dates: '21 June – 4 July 2026',
   startDate: '2026-06-21',
-  endDate: '2026-07-03',
+  endDate: '2026-07-04',
   assumptions: {
     fuelEconomyKmL: 30,
     fuelPriceBahtPerL: 40,
@@ -207,14 +209,14 @@ export const trip: TripData = {
     snacksPerDayBaht: 100
   },
   totals: {
-    distanceKm: 2200,
-    fuelUsedL: 73.3,
-    fuelCost: 2933,
-    food: 3260,
-    accommodation: 5900,
-    estimatedTotal: 12093,
+    distanceKm: 2310,
+    fuelUsedL: 77.0,
+    fuelCost: 3080,
+    food: 3500,
+    accommodation: 6600,
+    estimatedTotal: 13180,
     contingency: 1500,
-    budgetEnvelope: 13600
+    budgetEnvelope: 14680
   },
   phases: [
     {
@@ -224,13 +226,13 @@ export const trip: TripData = {
     },
     {
       title: 'Mountain Core',
-      days: 'Days 5–10',
-      route: 'Mae Chaem → Khun Yuam → Mae Hong Son → Pai → Chiang Mai'
+      days: 'Days 5–9',
+      route: 'Mae Chaem → Khun Yuam → Mae Hong Son → Pai (local day)'
     },
     {
       title: 'Southbound',
-      days: 'Days 11–13',
-      route: 'Chiang Mai → Tak → Nakhon Sawan → Bangkok'
+      days: 'Days 10–14',
+      route: 'Pai → Lamphun → Uttaradit → Phitsanulok (stop) → Pichit → Nakhon Sawan → Bangkok'
     }
   ],
   days: [
@@ -864,41 +866,44 @@ export const trip: TripData = {
     {
       day: 10,
       date: 'Tue 30 Jun',
-      title: 'Pai to Chiang Mai',
-      route: 'Pai → Chiang Mai',
-      distanceKm: 135,
-      overnight: 'Chiang Mai',
+      title: 'Pai to Lamphun',
+      route: 'Pai → Lamphun',
+      distanceKm: 185,
+      overnight: 'Lamphun',
       departureTarget: '07:00',
       arrivalTarget: 'Lunch / early afternoon',
-      stay: 'B2 Budget Hotel Chiang Mai',
-      costs: { fuel: 180, food: 260, hotel: 550, total: 990 },
-      highlights: ['Route 1095', 'Mae Taeng corridor', 'Chiang Mai arrival'],
-      ridingNotes: ['Final mountain curve day.', 'Expect tourist traffic and unpredictable scooters.'],
+      stay: 'Lamphun budget hotel',
+      costs: { fuel: 247, food: 260, hotel: 600, total: 1107 },
+      highlights: ['Route 1095', 'Mae Taeng corridor', 'Lamphun arrival'],
+      ridingNotes: [
+        'Route 1095 remains an attention-heavy mountain leg.',
+        'After Chiang Mai, continue to Lamphun instead of stopping in the city.',
+      ],
       food: {
         primary: {
-          name: 'SP Chicken',
-          query: 'SP Chicken Chiang Mai',
-          whySpecial: 'Simple, satisfying Chiang Mai dinner after the Pai road.',
-          orderSuggestion: 'Roast chicken, som tam, sticky rice.',
-          viewOrVibe: 'Casual local institution.',
-          riderNote: 'Perfect when you want protein and no fuss.'
+          name: 'Lamphun local Thai restaurant',
+          query: 'Lamphun Thai restaurant',
+          whySpecial: 'Simple Lamphun Thai food after a long attention-heavy day.',
+          orderSuggestion: 'Rice plates, noodles, or simple stir-fries.',
+          viewOrVibe: 'Local, budget, no-fuss.',
+          riderNote: 'Eat close to the hotel so you can sleep early.'
         },
         backups: [
           {
-            name: 'Huen Muan Jai',
-            query: 'Huen Muan Jai Chiang Mai',
-            whySpecial: 'Northern Thai classic if you want a richer dinner.',
-            orderSuggestion: 'Khao soi, sai ua, northern curry, nam prik.',
-            viewOrVibe: 'More of a proper sit-down northern meal.',
-            riderNote: 'Go early if possible.'
+            name: 'Lamphun night market',
+            query: 'Lamphun night market food',
+            whySpecial: 'Flexible food choices if you want to wander.',
+            orderSuggestion: 'Grilled skewers, noodles, local curry and rice.',
+            viewOrVibe: 'Local night-market feel.',
+            riderNote: 'Best if you still have energy to walk.'
           },
           {
-            name: 'Santitham local food stalls',
-            query: 'Santitham food stalls Chiang Mai',
-            whySpecial: 'Cheap and close if staying near Santitham.',
-            orderSuggestion: 'Rice plates, noodles, grilled pork, fruit shakes.',
-            viewOrVibe: 'Local neighborhood food.',
-            riderNote: 'Best if you want to park the bike and walk.'
+            name: 'Lamphun food court near hotel',
+            query: 'Lamphun food court',
+            whySpecial: 'Easy, weather-proof option near the hotel.',
+            orderSuggestion: 'Any basic Thai rice plate or noodle dish.',
+            viewOrVibe: 'Practical, no-frills.',
+            riderNote: 'Use if you are tired, wet, or done making decisions.'
           }
         ]
       },
@@ -907,11 +912,11 @@ export const trip: TripData = {
           role: 'departure',
           name: 'Coffee in Love',
           query: 'Coffee in Love Pai',
-          note: 'Early departure coffee on the Pai side before Route 1095.',
+          note: 'Departure coffee on the Pai side before Route 1095.',
           whySpecial: 'Scenic start before the curve-heavy ride.',
           orderSuggestion: 'Iced coffee and water.',
           viewOrVibe: 'Pai valley views.',
-          riderNote: 'Do not linger too long; the road still needs fresh attention.'
+          riderNote: 'Do not linger too long; the road still needs fresh attention for Route 1095.'
         },
         {
           role: 'mid_route',
@@ -921,99 +926,184 @@ export const trip: TripData = {
           whySpecial: 'Good reset after much of the mountain section is done.',
           orderSuggestion: 'Iced espresso drink or cold water.',
           viewOrVibe: 'Roadside café on the Chiang Mai approach.',
-          riderNote: 'Use this before the final push into Chiang Mai traffic.'
+          riderNote: 'Use this before the final push past Chiang Mai and on toward Lamphun.'
+        },
+        {
+          role: 'arrival',
+          name: 'Lamphun arrival café',
+          query: 'Lamphun cafe',
+          note: 'Arrival café in Lamphun after a long attention day.',
+          whySpecial: 'Lets you decompress after Route 1095 and the Chiang Mai corridor.',
+          orderSuggestion: 'Iced coffee, water, or a simple snack.',
+          viewOrVibe: 'Town café atmosphere.',
+          riderNote: 'Choose based on easy parking near the hotel.'
         }
       ],
       places: [
-        { id: 'd10-route', type: 'route', name: 'Pai to Chiang Mai via Route 1095', query: 'Route 1095 Pai Chiang Mai' },
-        { id: 'd10-hotel', type: 'hotel', name: 'B2 Budget Hotel Chiang Mai', query: 'B2 Budget Hotel Chiang Mai' },
-        { id: 'd10-view', type: 'viewpoint', name: 'Chiang Mai old city moat', query: 'Chiang Mai old city moat sunset' }
+        { id: 'd10-route', type: 'route', name: 'Pai to Lamphun via Route 1095', query: 'Pai to Lamphun via Chiang Mai route' },
+        { id: 'd10-hotel', type: 'hotel', name: 'Lamphun budget hotel', query: 'Lamphun budget hotel' },
+        { id: 'd10-view', type: 'viewpoint', name: 'Lamphun old town', query: 'Lamphun old town' }
       ]
     },
     {
       day: 11,
       date: 'Wed 1 Jul',
-      title: 'Chiang Mai to Tak',
-      route: 'Chiang Mai → Tak',
-      distanceKm: 270,
-      overnight: 'Tak',
-      departureTarget: '06:30',
+      title: 'Lamphun to Uttaradit',
+      route: 'Lamphun → Uttaradit',
+      distanceKm: 200,
+      overnight: 'Uttaradit',
+      departureTarget: '07:00',
       arrivalTarget: 'Early / mid-afternoon',
-      stay: 'Budget hotel in Tak / Viangtak Riverside Hotel fallback',
-      costs: { fuel: 360, food: 240, hotel: 500, total: 1100 },
-      highlights: ['Southbound sweep', 'Lampang corridor', 'Tak riverside'],
-      ridingNotes: ['Longest return day.', 'Flowing road after the mountain section.'],
+      stay: 'Uttaradit budget hotel',
+      costs: { fuel: 267, food: 240, hotel: 550, total: 1057 },
+      highlights: ['Southbound sweep', 'Lampang corridor', 'Uttaradit arrival'],
+      ridingNotes: ['Moderate southbound transit day.', 'Keep the day flowing rather than sightseeing-heavy.'],
       food: {
         primary: {
-          name: 'Bankhiangnam Restaurant',
-          query: 'Bankhiangnam Restaurant Tak',
-          whySpecial: 'Good Thai dinner target in Tak.',
-          orderSuggestion: 'Thai dishes, fish or river-style dishes if available.',
-          viewOrVibe: 'Riverside / local restaurant feel.',
-          riderNote: 'Good way to turn a transit overnight into a proper stop.'
+          name: 'Uttaradit local Thai restaurant',
+          query: 'Uttaradit Thai restaurant',
+          whySpecial: 'Straightforward Thai food for a transit overnight.',
+          orderSuggestion: 'Rice plates, noodles, or simple stir-fries.',
+          viewOrVibe: 'Local neighborhood restaurant.',
+          riderNote: 'Good main dinner target when you want a proper meal but not a big event.'
         },
         backups: [
           {
-            name: 'Aiyara Wadi Restaurant',
-            query: 'Aiyara Wadi Restaurant Tak',
-            whySpecial: 'Useful Thai restaurant backup.',
-            orderSuggestion: 'Rice dishes, stir-fries, soups.',
-            viewOrVibe: 'Local sit-down restaurant.',
-            riderNote: 'Use if Bankhiangnam is closed or inconvenient.'
+            name: 'Uttaradit night market',
+            query: 'Uttaradit night market food',
+            whySpecial: 'Flexible choices and easy food if you arrive with some energy.',
+            orderSuggestion: 'Grilled skewers, noodles, and rice dishes.',
+            viewOrVibe: 'Night-market energy.',
+            riderNote: 'Best if you want low-commitment food and a short walk.'
           },
           {
-            name: 'Chit Chon',
-            query: 'Chit Chon Tak restaurant',
-            whySpecial: 'Local option for an uncomplicated dinner.',
-            orderSuggestion: 'Thai rice plates or noodle dishes.',
-            viewOrVibe: 'Practical local food.',
-            riderNote: 'Backup for tired-night simplicity.'
+            name: 'Uttaradit local noodle shop',
+            query: 'Uttaradit noodle shop',
+            whySpecial: 'Quick, simple meal when you only want a bowl of something hot.',
+            orderSuggestion: 'Noodle soup or tom yum.',
+            viewOrVibe: 'Small-town noodle shop.',
+            riderNote: 'Good on tired or rainy evenings.'
           }
         ]
       },
       dayCoffeeNote:
-        'Long return day: keep stops practical and do not detour for café hunting.',
+        'Moderate return day: keep stops practical and do not detour for café hunting.',
       coffeeStops: [
         {
           role: 'mid_route',
-          name: 'Lampang / Mae Tha corridor coffee',
-          query: 'Mae Tha Lampang coffee shop',
-          note: 'First useful stop after leaving Chiang Mai.',
-          whySpecial: 'Practical break before the ride settles into the southbound run.',
+          name: 'Lampang corridor coffee stop',
+          query: 'Lampang coffee Mae Tha corridor',
+          note: 'First useful stop after leaving Lamphun.',
+          whySpecial: 'Practical coffee and stretch stop before the ride bends east toward Uttaradit.',
           orderSuggestion: 'Iced coffee and water.',
           viewOrVibe: 'Roadside northern corridor café.',
-          riderNote: 'Choose based on easy parking and shade.'
+          riderNote: 'Choose based on easy parking and shade rather than the name.'
         },
         {
           role: 'arrival',
-          name: 'Tak approach café / Tieng Na Coffee if convenient',
-          query: 'Tieng Na Coffee Tak',
-          note: 'Use only if convenient to the route.',
-          whySpecial: 'Good arrival/late-route stop if it does not require a detour.',
-          orderSuggestion: 'Iced coffee, bakery snack, cold drink.',
-          viewOrVibe: 'Café/farm-style stop depending on exact location.',
-          riderNote: 'Do not hunt for it if tired; any safe Tak café works.'
+          name: 'Uttaradit arrival café',
+          query: 'Uttaradit cafe',
+          note: 'Arrival coffee in Uttaradit.',
+          whySpecial: 'Lets you cool down before check-in or dinner.',
+          orderSuggestion: 'Iced coffee or soft drink.',
+          viewOrVibe: 'Town café.',
+          riderNote: 'Pick whichever café is closest to the hotel with easy parking.'
         }
       ],
       places: [
-        { id: 'd11-route', type: 'route', name: 'Chiang Mai to Tak route', query: 'Chiang Mai to Tak driving route' },
-        { id: 'd11-hotel', type: 'hotel', name: 'Viangtak Riverside Hotel', query: 'Viangtak Riverside Hotel Tak' },
-        { id: 'd11-view', type: 'viewpoint', name: 'Tak riverside / Ping River', query: 'Tak Ping River riverside' }
+        { id: 'd11-route', type: 'route', name: 'Lamphun to Uttaradit route', query: 'Lamphun to Uttaradit driving route' },
+        { id: 'd11-hotel', type: 'hotel', name: 'Uttaradit budget hotel', query: 'Uttaradit budget hotel' },
+        { id: 'd11-view', type: 'viewpoint', name: 'Uttaradit town', query: 'Uttaradit Thailand' }
       ]
     },
     {
       day: 12,
       date: 'Thu 2 Jul',
-      title: 'Tak to Nakhon Sawan',
-      route: 'Tak → Nakhon Sawan',
-      distanceKm: 185,
-      overnight: 'Nakhon Sawan',
+      title: 'Uttaradit to Pichit (via Phitsanulok)',
+      route: 'Uttaradit → Phitsanulok stop → Pichit',
+      distanceKm: 180,
+      overnight: 'Pichit',
       departureTarget: '07:00',
       arrivalTarget: 'Lunch / early afternoon',
-      stay: 'B2 Nakhon Sawan Boutique & Budget Hotel',
-      costs: { fuel: 247, food: 240, hotel: 550, total: 1037 },
-      highlights: ['Ping River', 'Kamphaeng Phet stop', 'Nakhon Sawan arrival'],
-      ridingNotes: ['Deliberately easier than Day 11.', 'Decompression transit day.'],
+      stay: 'Pichit budget hotel',
+      costs: { fuel: 240, food: 240, hotel: 500, total: 980 },
+      highlights: ['Cultural corridor', 'Planned Phitsanulok stop', 'Pichit arrival'],
+      ridingNotes: [
+        'Easy cultural transit with a planned Phitsanulok stop.',
+        'Keep enough time to arrive in Pichit by mid-to-late afternoon.',
+      ],
+      food: {
+        primary: {
+          name: 'Pichit local Thai restaurant',
+          query: 'Pichit Thai restaurant',
+          whySpecial: 'Simple Pichit Thai food to end a relaxed transit day.',
+          orderSuggestion: 'Rice plates, curries, or stir-fries.',
+          viewOrVibe: 'Local neighborhood restaurant.',
+          riderNote: 'Choose something close to the hotel and keep the evening easy.'
+        },
+        backups: [
+          {
+            name: 'Pichit night market',
+            query: 'Pichit night market food',
+            whySpecial: 'Flexible evening food with low friction.',
+            orderSuggestion: 'Grilled skewers, noodles, easy snacks.',
+            viewOrVibe: 'Local night-market atmosphere.',
+            riderNote: 'Best if you want to wander briefly without planning.'
+          },
+          {
+            name: 'Pichit local noodle or rice shop',
+            query: 'Pichit noodle shop',
+            whySpecial: 'Fast, simple one-plate dinner.',
+            orderSuggestion: 'Noodle soup or basic rice dish.',
+            viewOrVibe: 'Practical and unpretentious.',
+            riderNote: 'Use on very low-energy evenings.'
+          }
+        ]
+      },
+      coffeeStops: [
+        {
+          role: 'mid_route',
+          name: 'Phitsanulok café stop',
+          query: 'Phitsanulok cafe',
+          note: 'Planned mid-route café stop in Phitsanulok.',
+          whySpecial: 'Breaks the shorter return leg nicely and matches the planned cultural stop.',
+          orderSuggestion: 'Iced coffee or Thai tea.',
+          viewOrVibe: 'Town café / provincial-city feel.',
+          riderNote: 'Use this as the main pause between Uttaradit and Pichit.'
+        },
+        {
+          role: 'arrival',
+          name: 'Pichit arrival café',
+          query: 'Pichit cafe',
+          note: 'Arrival café in Pichit.',
+          whySpecial: 'Lets you cool down before hotel check-in or dinner.',
+          orderSuggestion: 'Iced drink and snack.',
+          viewOrVibe: 'Small-town café.',
+          riderNote: 'Pick a spot close to the hotel with easy parking.'
+        }
+      ],
+      places: [
+        { id: 'd12-route', type: 'route', name: 'Uttaradit to Pichit via Phitsanulok route', query: 'Uttaradit Phitsanulok Pichit driving route' },
+        { id: 'd12-hotel', type: 'hotel', name: 'Pichit budget hotel', query: 'Pichit budget hotel' },
+        { id: 'd12-view', type: 'viewpoint', name: 'Pichit town', query: 'Pichit Thailand' }
+      ]
+    },
+    {
+      day: 13,
+      date: 'Fri 3 Jul',
+      title: 'Pichit to Nakhon Sawan',
+      route: 'Pichit → Nakhon Sawan',
+      distanceKm: 135,
+      overnight: 'Nakhon Sawan',
+      departureTarget: '07:00',
+      arrivalTarget: 'Late morning / early afternoon',
+      stay: 'Hop Inn Nakhon Sawan',
+      costs: { fuel: 180, food: 240, hotel: 650, total: 1070 },
+      highlights: ['Short recovery transit', 'Nakhon Sawan riverside', 'Easy staging for final day'],
+      ridingNotes: [
+        'Short recovery transit after the cultural corridor.',
+        'Do not add detours just because the mileage is low.',
+      ],
       food: {
         primary: {
           name: 'Bueng Boraphet / riverside fish restaurant area',
@@ -1025,7 +1115,7 @@ export const trip: TripData = {
         },
         backups: [
           {
-            name: 'Nakhon Sawan riverside restaurants',
+            name: 'Nakhon Sawan riverside restaurant',
             query: 'Nakhon Sawan riverside restaurant',
             whySpecial: 'Easy Thai dinner zone near the river.',
             orderSuggestion: 'Thai shared dishes or rice plates.',
@@ -1033,7 +1123,7 @@ export const trip: TripData = {
             riderNote: 'Good if you want to stay central.'
           },
           {
-            name: 'Big C / Central food court',
+            name: 'Central or Big C food court',
             query: 'Central Nakhon Sawan food court',
             whySpecial: 'Not romantic, but reliable in rain or fatigue.',
             orderSuggestion: 'Any Thai rice plate, noodles, or soup.',
@@ -1042,22 +1132,23 @@ export const trip: TripData = {
           }
         ]
       },
+      dayCoffeeNote: 'Short recovery day: one mid-route stop plus an arrival café is enough.',
       coffeeStops: [
         {
           role: 'mid_route',
-          name: 'Kamphaeng Phet café stop',
-          query: 'Kamphaeng Phet cafe',
-          note: 'Natural mid-route stop on the way south.',
-          whySpecial: 'Breaks the shorter return leg nicely.',
-          orderSuggestion: 'Iced coffee or Thai tea.',
-          viewOrVibe: 'Town café / historical town pause.',
-          riderNote: 'Good place to stretch before the final run to Nakhon Sawan.'
+          name: 'Roadside café between Pichit and Nakhon Sawan',
+          query: 'Cafe between Pichit and Nakhon Sawan',
+          note: 'Flexible mid-route café stop on the short leg.',
+          whySpecial: 'Useful pause even on an easy day.',
+          orderSuggestion: 'Iced coffee, water, small snack.',
+          viewOrVibe: 'Small-town or roadside café.',
+          riderNote: 'Choose based on safe parking and shade.'
         },
         {
           role: 'arrival',
           name: 'Nakhon Sawan arrival café',
           query: 'Nakhon Sawan cafe',
-          note: 'Arrival café after the shorter return leg.',
+          note: 'Arrival café after a short day.',
           whySpecial: 'Lets you cool down before hotel check-in or dinner.',
           orderSuggestion: 'Iced drink and snack.',
           viewOrVibe: 'City café, choose parking first.',
@@ -1065,14 +1156,14 @@ export const trip: TripData = {
         }
       ],
       places: [
-        { id: 'd12-route', type: 'route', name: 'Tak to Nakhon Sawan route', query: 'Tak to Nakhon Sawan driving route' },
-        { id: 'd12-hotel', type: 'hotel', name: 'B2 Nakhon Sawan Boutique & Budget Hotel', query: 'B2 Nakhon Sawan Boutique and Budget Hotel' },
-        { id: 'd12-view', type: 'viewpoint', name: 'Nakhon Sawan river viewpoint', query: 'Nakhon Sawan river viewpoint' }
+        { id: 'd13-route', type: 'route', name: 'Pichit to Nakhon Sawan route', query: 'Pichit to Nakhon Sawan driving route' },
+        { id: 'd13-hotel', type: 'hotel', name: 'Hop Inn Nakhon Sawan', query: 'Hop Inn Nakhon Sawan' },
+        { id: 'd13-view', type: 'viewpoint', name: 'Nakhon Sawan river viewpoint', query: 'Nakhon Sawan river viewpoint' }
       ]
     },
     {
-      day: 13,
-      date: 'Fri 3 Jul',
+      day: 14,
+      date: 'Sat 4 Jul',
       title: 'Nakhon Sawan to Bangkok',
       route: 'Nakhon Sawan → Bangkok',
       distanceKm: 245,
@@ -1136,8 +1227,8 @@ export const trip: TripData = {
         }
       ],
       places: [
-        { id: 'd13-route', type: 'route', name: 'Nakhon Sawan to Bangkok route', query: 'Nakhon Sawan to Bangkok driving route' },
-        { id: 'd13-view', type: 'viewpoint', name: 'Bangkok / Chao Phraya finish', query: 'Bangkok Chao Phraya skyline' }
+        { id: 'd14-route', type: 'route', name: 'Nakhon Sawan to Bangkok route', query: 'Nakhon Sawan to Bangkok driving route' },
+        { id: 'd14-view', type: 'viewpoint', name: 'Bangkok / Chao Phraya finish', query: 'Bangkok Chao Phraya skyline' }
       ]
     }
   ],
@@ -1147,17 +1238,22 @@ export function getDayMap(dayNumber: number): DayMap {
   return dayMapsByNumber[dayNumber];
 }
 
-function enrichDay(day: TripDay): TripDayEnriched {
+function enrichDay(day: TripDay, locale: Locale = "en"): TripDayEnriched {
   // Lazy require avoids circular module init issues in dev.
   const { mergeDayExtras } = require("./dayExtras") as typeof import("./dayExtras");
-  return mergeDayExtras(day);
+  return mergeDayExtras(day, locale);
 }
 
-export function getDayByNumber(dayNumber: number): TripDayEnriched | undefined {
-  const day = trip.days.find((d) => d.day === dayNumber);
-  return day ? enrichDay(day) : undefined;
+export function getDayByNumber(
+  dayNumber: number,
+  locale: Locale = "en"
+): TripDayEnriched | undefined {
+  const data = locale === "en" ? trip : getTripData(locale);
+  const day = data.days.find((d) => d.day === dayNumber);
+  return day ? enrichDay(day, locale) : undefined;
 }
 
-export function getTripDays(): TripDayEnriched[] {
-  return trip.days.map(enrichDay);
+export function getTripDays(locale: Locale = "en"): TripDayEnriched[] {
+  const data = locale === "en" ? trip : getTripData(locale);
+  return data.days.map((d) => enrichDay(d, locale));
 }

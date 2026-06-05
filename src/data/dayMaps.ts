@@ -87,33 +87,41 @@ export const dayMapsByNumber: Record<number, DayMap> = {
   },
   10: {
     start: { name: "Pai", lat: 19.3583, lng: 98.4367 },
-    end: { name: "Chiang Mai", lat: 18.7883, lng: 98.9853 },
+    end: { name: "Lamphun", lat: 18.5745, lng: 99.0087 },
     routePolyline: [
       [19.3583, 98.4367],
       [19.1177, 98.9418],
       [18.7883, 98.9853],
+      [18.5745, 99.0087],
     ],
   },
   11: {
-    start: { name: "Chiang Mai", lat: 18.7883, lng: 98.9853 },
-    end: { name: "Tak", lat: 16.8833, lng: 99.125 },
+    start: { name: "Lamphun", lat: 18.5745, lng: 99.0087 },
+    end: { name: "Uttaradit", lat: 17.62, lng: 100.0993 },
     routePolyline: [
-      [18.7883, 98.9853],
+      [18.5745, 99.0087],
       [18.2888, 99.4909],
-      [17.0, 99.25],
-      [16.8833, 99.125],
+      [17.62, 100.0993],
     ],
   },
   12: {
-    start: { name: "Tak", lat: 16.8833, lng: 99.125 },
-    end: { name: "Nakhon Sawan", lat: 15.7047, lng: 100.1372 },
+    start: { name: "Uttaradit", lat: 17.62, lng: 100.0993 },
+    end: { name: "Pichit", lat: 16.4429, lng: 100.3488 },
     routePolyline: [
-      [16.8833, 99.125],
-      [16.4828, 99.522],
-      [15.7047, 100.1372],
+      [17.62, 100.0993],
+      [16.8211, 100.2659],
+      [16.4429, 100.3488],
     ],
   },
   13: {
+    start: { name: "Pichit", lat: 16.4429, lng: 100.3488 },
+    end: { name: "Nakhon Sawan", lat: 15.7047, lng: 100.1372 },
+    routePolyline: [
+      [16.4429, 100.3488],
+      [15.7047, 100.1372],
+    ],
+  },
+  14: {
     start: { name: "Nakhon Sawan", lat: 15.7047, lng: 100.1372 },
     end: { name: "Bangkok", lat: 13.737, lng: 100.56 },
     routePolyline: [

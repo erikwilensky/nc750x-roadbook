@@ -1,4 +1,8 @@
+"use client";
+
 import type { FuelStrategy } from "@/data/trip";
+import { useLocale } from "@/i18n/LocaleProvider";
+import { rangeConcernTh } from "@/i18n/tripTh";
 import { makeGoogleMapsSearchUrl } from "@/lib/mapLinks";
 import { formatBaht } from "@/lib/money";
 
@@ -14,17 +18,23 @@ const RANGE_STYLES: Record<FuelStrategy["rangeConcern"], string> = {
 };
 
 export function FuelStrategyCard({ fuelStrategy, compact }: FuelStrategyCardProps) {
+  const { locale, t } = useLocale();
+  const rangeLabel =
+    locale === "th"
+      ? rangeConcernTh[fuelStrategy.rangeConcern]
+      : fuelStrategy.rangeConcern;
+
   return (
     <section className={`fuel-card card p-4 ${compact ? "fuel-card-compact" : ""}`}>
       <div className="flex flex-wrap items-start justify-between gap-2">
-        <h3 className="text-sm font-semibold text-forest">Fuel strategy</h3>
+        <h3 className="text-sm font-semibold text-forest">{t.common.fuelStrategy}</h3>
         <span className={`fuel-range-badge ${RANGE_STYLES[fuelStrategy.rangeConcern]}`}>
-          Range: {fuelStrategy.rangeConcern}
+          {t.common.range}: {rangeLabel}
         </span>
       </div>
       <div className="mt-2 flex flex-wrap gap-3 text-sm">
         <span>
-          <span className="text-muted">Est. </span>
+          <span className="text-muted">{t.common.estimated} </span>
           {fuelStrategy.estimatedLiters.toFixed(1)} L
         </span>
         <span>
@@ -32,7 +42,7 @@ export function FuelStrategyCard({ fuelStrategy, compact }: FuelStrategyCardProp
           {formatBaht(fuelStrategy.estimatedCost)}
         </span>
         {fuelStrategy.startFull && (
-          <span className="text-xs text-forest">Start full</span>
+          <span className="text-xs text-forest">{t.common.startFull}</span>
         )}
       </div>
       <p className="mt-3 text-sm">{fuelStrategy.plan}</p>

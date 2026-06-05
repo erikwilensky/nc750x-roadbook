@@ -1,4 +1,7 @@
+"use client";
+
 import type { DoNotDetour } from "@/data/trip";
+import { useLocale } from "@/i18n/LocaleProvider";
 
 type DoNotDetourCardProps = {
   note: DoNotDetour;
@@ -12,6 +15,8 @@ const SEVERITY_CLASS: Record<DoNotDetour["severity"], string> = {
 };
 
 export function DoNotDetourCard({ note, prominent }: DoNotDetourCardProps) {
+  const { t } = useLocale();
+
   return (
     <section
       className={`detour-card ${SEVERITY_CLASS[note.severity]} ${prominent ? "detour-card-prominent" : ""}`}
@@ -25,7 +30,7 @@ export function DoNotDetourCard({ note, prominent }: DoNotDetourCardProps) {
       <p className="mt-2 text-sm text-ink">{note.message}</p>
       {note.exceptions && (
         <p className="mt-2 text-xs text-muted">
-          <span className="font-medium">Exception: </span>
+          <span className="font-medium">{t.common.exception}: </span>
           {note.exceptions}
         </p>
       )}

@@ -325,117 +325,176 @@ export const dayExtrasByNumber: Record<number, DayExtras> = {
   },
   10: {
     difficulty: {
-      rating: 5,
-      label: "Route 1095 return",
-      summary: "Short distance but heavy attention due to Pai to Chiang Mai curves and traffic.",
-      factors: ["Route 1095", "Vans and scooters", "Blind curves", "Chiang Mai arrival traffic"],
+      rating: 4,
+      label: "Route 1095 plus Lamphun push",
+      summary: "Route 1095 mountain curves from Pai followed by continued riding past Chiang Mai to Lamphun.",
+      factors: [
+        "Route 1095 curves",
+        "Tourist vans and scooters",
+        "Chiang Mai corridor traffic",
+        "Extended day continuing to Lamphun",
+      ],
     },
     weather: {
-      summary: "Check rain and fog before leaving. Avoid late-afternoon mountain riding.",
+      summary: "Check rain and fog before leaving Pai. Plan to clear the mountain curves and city corridor before afternoon storms.",
       checkpoints: [
         { label: "Start", name: "Pai", query: "Pai weather", note: "Leave early — check rain." },
         { label: "Mid-route", name: "Mae Taeng", query: "Mae Taeng weather", note: "Descent weather check." },
-        { label: "Destination", name: "Chiang Mai", query: "Chiang Mai weather", note: "Arrival traffic and heat." },
+        { label: "Destination", name: "Lamphun", query: "Lamphun weather", note: "Check for evening rain around Lamphun." },
+      ],
+    },
+    fuelStrategy: {
+      startFull: true,
+      estimatedLiters: 6.2,
+      estimatedCost: 247,
+      rangeConcern: "medium",
+      plan: "Start full from Pai. Use Mae Taeng side fuel if needed, then arrive in Lamphun with margin.",
+      suggestedFuelStops: [
+        { name: "Pai before departure", query: "PTT Pai gas station", note: "Start full." },
+        { name: "Mae Taeng", query: "PTT Mae Taeng gas station", note: "Mid-route option." },
+        {
+          name: "Lamphun arrival",
+          query: "PTT Lamphun gas station",
+          note: "Top up near Lamphun so you are set for the next day.",
+        },
+      ],
+      caution:
+        "Route 1095 is attention-heavy. Do not combine low fuel, wet roads, and Chiang Mai traffic. Keep fuel and energy margins.",
+    },
+    doNotDetour: {
+      severity: "high",
+      title: "Do not stop overnight in Chiang Mai",
+      message:
+        "The goal is to clear Route 1095 and Chiang Mai, then reach Lamphun. Do not downgrade the day to a Chiang Mai overnight.",
+      exceptions: "Only consider an unplanned Chiang Mai overnight if weather or fatigue make it clearly safer.",
+    },
+  },
+  11: {
+    difficulty: {
+      rating: 3,
+      label: "Moderate southbound transit",
+      summary: "Longer but flowing ride from Lamphun to Uttaradit with a Lampang corridor break.",
+      factors: ["200 km distance", "Southbound highway", "Post-mountain fatigue", "Heat"],
+    },
+    weather: flatWeather(
+      "Check heat, rain, and afternoon storms. Leave early to avoid traffic and heat.",
+      "Lamphun",
+      "Lampang",
+      "Uttaradit"
+    ),
+    fuelStrategy: {
+      startFull: true,
+      estimatedLiters: 6.7,
+      estimatedCost: 267,
+      rangeConcern: "low",
+      plan: "Start full from Lamphun. Top up around the Lampang / Mae Tha corridor if convenient. Arrive Uttaradit with margin.",
+      suggestedFuelStops: [
+        { name: "Lamphun before departure", query: "PTT Lamphun gas station", note: "Start full or near full." },
+        { name: "Lampang / Thoen corridor", query: "PTT Lampang gas station", note: "Hydration + fuel stop." },
+        { name: "Uttaradit arrival", query: "PTT Uttaradit gas station", note: "Arrive with fuel for tomorrow." },
+      ],
+      caution: "Use fuel stops as hydration and stretch stops. Do not overbuild sightseeing on this transit day.",
+    },
+    doNotDetour: {
+      severity: "medium",
+      title: "Do not add major Lampang sightseeing",
+      message:
+        "Lampang is a corridor, not the destination on this version. The goal is to keep the day moving toward Uttaradit.",
+      exceptions: "Short coffee or fuel stops only.",
+    },
+  },
+  12: {
+    difficulty: {
+      rating: 2,
+      label: "Easy cultural transit",
+      summary: "Shorter ride with a planned Phitsanulok stop before Pichit.",
+      factors: ["180 km distance", "Planned Phitsanulok stop", "Provincial roads", "Easier rhythm"],
+    },
+    weather: flatWeather(
+      "Check heat, rain, and afternoon storms. Leave early to avoid traffic and heat.",
+      "Uttaradit",
+      "Phitsanulok",
+      "Pichit"
+    ),
+    fuelStrategy: {
+      startFull: true,
+      estimatedLiters: 6.0,
+      estimatedCost: 240,
+      rangeConcern: "low",
+      plan: "Start full from Uttaradit. Use Phitsanulok as the natural mid-route fuel and coffee stop, then arrive Pichit with margin.",
+      suggestedFuelStops: [
+        { name: "Uttaradit", query: "PTT Uttaradit gas station", note: "Start full." },
+        { name: "Phitsanulok", query: "PTT Phitsanulok gas station", note: "Mid-route pause and fuel." },
+        { name: "Pichit arrival", query: "PTT Pichit gas station", note: "Fuel ready for the short next day." },
+      ],
+      caution: "This is an easy fuel day. Use Phitsanulok and Pichit more for rest and rhythm than pure range.",
+    },
+    doNotDetour: {
+      severity: "low",
+      title: "Do not turn Phitsanulok into the overnight",
+      message:
+        "Phitsanulok is a planned stop, not the overnight. Keep enough time and energy to reach Pichit before late afternoon.",
+      exceptions: "A slightly longer Phitsanulok café or lunch stop is fine if timing and weather are good.",
+    },
+  },
+  13: {
+    difficulty: {
+      rating: 1,
+      label: "Short recovery transit",
+      summary: "Easy ride from Pichit to Nakhon Sawan designed as a short recovery transit.",
+      factors: ["135 km distance", "Short day", "Prep for final return", "Chance to decompress"],
+    },
+    weather: {
+      summary: "Simple transit: check for heat and storms along the river corridor.",
+      checkpoints: [
+        { label: "Start", name: "Pichit", query: "Pichit weather", note: "Check morning weather before departure." },
+        {
+          label: "Mid-route",
+          name: "River corridor",
+          query: "Pichit Nakhon Sawan weather",
+          note: "Useful quick check of conditions along the way.",
+        },
+        {
+          label: "Destination",
+          name: "Nakhon Sawan",
+          query: "Nakhon Sawan weather",
+          note: "Check for evening storms before riverside dinner.",
+        },
       ],
     },
     fuelStrategy: {
       startFull: true,
       estimatedLiters: 4.5,
       estimatedCost: 180,
-      rangeConcern: "medium",
-      plan: "Start full from Pai. Use Mae Taeng side fuel if needed. Arrive Chiang Mai ready for the return south.",
-      suggestedFuelStops: [
-        { name: "Pai before departure", query: "PTT Pai gas station", note: "Start full." },
-        { name: "Mae Taeng", query: "PTT Mae Taeng gas station", note: "Mid-route option." },
-        { name: "Chiang Mai arrival", query: "PTT Chiang Mai gas station", note: "Arrival margin." },
-      ],
-      caution: "Route 1095 is attention-heavy. Do not combine low fuel, wet roads, and traffic.",
-    },
-    doNotDetour: {
-      severity: "high",
-      title: "Do not start late from Pai",
-      message: "Pai to Chiang Mai is short but busy and twisty. Late starts increase traffic, heat, and afternoon rain risk.",
-      exceptions: "None. Start early.",
-    },
-  },
-  11: {
-    difficulty: {
-      rating: 3,
-      label: "Long return transit",
-      summary: "Longest return day, but more flowing than the mountain core.",
-      factors: ["270 km distance", "Southbound highway", "Fatigue after mountain section", "Heat"],
-    },
-    weather: flatWeather(
-      "Check heat, rain, and afternoon storms. Leave early to avoid traffic and heat.",
-      "Chiang Mai",
-      "Lampang",
-      "Tak"
-    ),
-    fuelStrategy: {
-      startFull: true,
-      estimatedLiters: 9.0,
-      estimatedCost: 360,
       rangeConcern: "low",
-      plan: "Start full from Chiang Mai. Top up around Lampang / Thoen corridor if convenient. Arrive Tak with margin.",
+      plan:
+        "Start with enough fuel from Pichit. A single fuel check on arrival in Nakhon Sawan is enough to prepare for the final day.",
       suggestedFuelStops: [
-        { name: "Chiang Mai before departure", query: "PTT Chiang Mai gas station", note: "Start full." },
-        { name: "Lampang / Thoen corridor", query: "PTT Lampang gas station", note: "Hydration + fuel stop." },
-        { name: "Tak arrival", query: "PTT Tak gas station", note: "Arrive with margin." },
+        { name: "Pichit", query: "PTT Pichit gas station", note: "Optional top-up before departure." },
+        { name: "Nakhon Sawan", query: "PTT Nakhon Sawan gas station", note: "Arrive fuelled for the final day." },
       ],
-      caution: "This is the longest return day. Use fuel stops as hydration and stretch stops.",
-    },
-    doNotDetour: {
-      severity: "medium",
-      title: "Do not add scenic detours on the southbound run",
-      message: "This is the longest return transit day. Keep it efficient and use stops for hydration and rest.",
-      exceptions: "Coffee/fuel stops only.",
-    },
-  },
-  12: {
-    difficulty: {
-      rating: 2,
-      label: "Easy return transit",
-      summary: "Shorter return day designed to decompress.",
-      factors: ["Moderate distance", "Easier roads", "Useful recovery rhythm"],
-    },
-    weather: flatWeather(
-      "Check heat, rain, and afternoon storms. Leave early to avoid traffic and heat.",
-      "Tak",
-      "Kamphaeng Phet",
-      "Nakhon Sawan"
-    ),
-    fuelStrategy: {
-      startFull: true,
-      estimatedLiters: 6.2,
-      estimatedCost: 247,
-      rangeConcern: "low",
-      plan: "Start full from Tak. Stop around Kamphaeng Phet if needed. Refill in Nakhon Sawan for the final day.",
-      suggestedFuelStops: [
-        { name: "Tak", query: "PTT Tak gas station", note: "Morning check." },
-        { name: "Kamphaeng Phet", query: "PTT Kamphaeng Phet gas station", note: "Mid-route pause." },
-        { name: "Nakhon Sawan arrival", query: "PTT Nakhon Sawan gas station", note: "Fuel for final day." },
-      ],
-      caution: "Easy fuel day. Use the stop more for rest than range.",
+      caution: "Easy range day. Use fuel as a simple check-in rather than a constraint.",
     },
     doNotDetour: {
       severity: "low",
-      title: "Do not overthink the easy day",
-      message: "This is a recovery transit day. Keep it simple and arrive with energy.",
-      exceptions: "Short Kamphaeng Phet café pause is fine.",
+      title: "Do not add detours just because the mileage is low",
+      message:
+        "The point of this day is to keep it easy and arrive in Nakhon Sawan with energy for the final return to Bangkok.",
+      exceptions: "Short riverside or café pauses are fine if you still feel fresh.",
     },
   },
-  13: {
+  14: {
     difficulty: {
       rating: 3,
       label: "Final return / Bangkok entry",
-      summary: "Road distance is manageable, but Bangkok entry makes the day more tiring.",
+      summary: "Manageable distance, but Bangkok entry requires concentration and patience.",
       factors: ["Final-day fatigue", "Bangkok traffic", "Heat", "Urban concentration"],
     },
     weather: {
       summary: "Check rain near Bangkok and leave early to avoid afternoon traffic buildup.",
       checkpoints: [
         { label: "Start", name: "Nakhon Sawan", query: "Nakhon Sawan weather", note: "Leave early." },
-        { label: "Mid-route", name: "Chainat", query: "Chainat weather", note: "Final countryside check." },
+        { label: "Mid-route", name: "Chainat or Suphan Buri", query: "Chainat weather", note: "Final countryside check." },
         { label: "Destination", name: "Bangkok", query: "Bangkok weather", note: "Heat and storms near the city." },
       ],
     },
@@ -444,7 +503,7 @@ export const dayExtrasByNumber: Record<number, DayExtras> = {
       estimatedLiters: 8.2,
       estimatedCost: 327,
       rangeConcern: "low",
-      plan: "Start full from Nakhon Sawan. Use Chainat or Suphan Buri as a practical final stop before Bangkok.",
+      plan: "Start full from Nakhon Sawan. Use Chainat or Suphan Buri as a practical final fuel/rest stop before Bangkok.",
       suggestedFuelStops: [
         { name: "Nakhon Sawan", query: "PTT Nakhon Sawan gas station", note: "Start full." },
         { name: "Chainat", query: "PTT Chainat gas station", note: "Practical final stop." },
@@ -455,16 +514,24 @@ export const dayExtrasByNumber: Record<number, DayExtras> = {
     doNotDetour: {
       severity: "medium",
       title: "Do not arrive in Bangkok tired and late",
-      message: "Bangkok entry is the final boss. Leave early, stop before the city, hydrate, and keep the final approach calm.",
+      message:
+        "Bangkok entry is the final boss. Leave early, stop before the city, hydrate, and keep the final approach calm.",
       exceptions: "None. Finish clean.",
     },
   },
 };
 
-export function mergeDayExtras(day: TripDay): TripDayEnriched {
+export function mergeDayExtras(day: TripDay, locale: import("@/i18n/locale").Locale = "en"): TripDayEnriched {
   const extras = dayExtrasByNumber[day.day];
   if (!extras) {
     throw new Error(`Missing day extras for day ${day.day}`);
   }
-  return { ...day, ...extras };
+  const resolved =
+    locale === "th"
+      ? (require("@/i18n/dayExtrasTh") as typeof import("@/i18n/dayExtrasTh")).localizeDayExtras(
+          extras,
+          day.day
+        )
+      : extras;
+  return { ...day, ...resolved };
 }

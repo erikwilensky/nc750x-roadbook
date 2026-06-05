@@ -17,6 +17,8 @@ export const TOWN_COORDS: Record<string, { lat: number; lng: number; label: stri
   maeTaeng: { lat: 19.1177, lng: 98.9418, label: "Mae Taeng" },
   tak: { lat: 16.8833, lng: 99.125, label: "Tak" },
   kamphaengPhet: { lat: 16.4828, lng: 99.522, label: "Kamphaeng Phet" },
+  phitsanulok: { lat: 16.8211, lng: 100.2659, label: "Phitsanulok" },
+  pichit: { lat: 16.4429, lng: 100.3488, label: "Pichit" },
   nakhonSawan: { lat: 15.7047, lng: 100.1372, label: "Nakhon Sawan" },
   chainat: { lat: 15.1852, lng: 100.125, label: "Chainat" },
   suphanBuri: { lat: 14.4745, lng: 100.1177, label: "Suphan Buri" },

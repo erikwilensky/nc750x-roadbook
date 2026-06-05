@@ -1,4 +1,7 @@
+"use client";
+
 import type { DayDifficulty } from "@/data/trip";
+import { useLocale } from "@/i18n/LocaleProvider";
 
 type DifficultyBadgeProps = {
   difficulty: DayDifficulty;
@@ -13,11 +16,13 @@ function dotColor(rating: number): string {
 }
 
 export function DifficultyBadge({ difficulty, compact }: DifficultyBadgeProps) {
+  const { t } = useLocale();
+
   return (
     <div className={`difficulty-badge ${compact ? "difficulty-badge-compact" : ""}`}>
       <div className="flex flex-wrap items-center gap-2">
         <span className="text-sm font-semibold text-forest">
-          Difficulty {difficulty.rating}/5
+          {t.common.difficulty} {difficulty.rating}/5
         </span>
         <span className="text-xs text-muted">{difficulty.label}</span>
       </div>
